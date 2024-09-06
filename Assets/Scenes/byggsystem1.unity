@@ -160,7 +160,7 @@ Transform:
   m_GameObject: {fileID: 67958275}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1105,13 +1105,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: building0
       objectReference: {fileID: 0}
+    - target: {fileID: 4493941338137066789, guid: 48b00d1154f67c14db446d4d65d7b0b6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493941338137066789, guid: 48b00d1154f67c14db446d4d65d7b0b6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493941338137066789, guid: 48b00d1154f67c14db446d4d65d7b0b6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929464771574114777, guid: 48b00d1154f67c14db446d4d65d7b0b6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929464771574114777, guid: 48b00d1154f67c14db446d4d65d7b0b6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929464771574114777, guid: 48b00d1154f67c14db446d4d65d7b0b6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4929464771574114777, guid: 48b00d1154f67c14db446d4d65d7b0b6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.6483088
+      value: -4.52
       objectReference: {fileID: 0}
     - target: {fileID: 4929464771574114777, guid: 48b00d1154f67c14db446d4d65d7b0b6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.15642928
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4929464771574114777, guid: 48b00d1154f67c14db446d4d65d7b0b6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1154,8 +1178,8 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 878561868}
   - {fileID: 67958277}
+  - {fileID: 878561868}
   - {fileID: 1636929623}
   - {fileID: 1687352881}
   - {fileID: 86752359116394348}
