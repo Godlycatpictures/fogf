@@ -1,3 +1,3 @@
 readme le fog
 
-spel med 
+spel med SUPER COOLA FEATURES 
