@@ -290,7 +290,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 99
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.80784315}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -416,6 +416,10 @@ PrefabInstance:
       propertyPath: maskObject
       value: 
       objectReference: {fileID: 1890162636}
+    - target: {fileID: 2115078926956749538, guid: 1be4f1984df45fb49b37ef4a84383ad1, type: 3}
+      propertyPath: m_MaskAlphaCutoff
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 4236881904152297315, guid: 1be4f1984df45fb49b37ef4a84383ad1, type: 3}
       propertyPath: m_Name
       value: Capsule
