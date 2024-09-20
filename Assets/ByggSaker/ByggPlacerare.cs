@@ -11,7 +11,7 @@ public class ByggPlacerare : MonoBehaviour
     /*
     private void Awake()
     {
-        buildingPrefab = GetComponent<GameObject>();
+        
         buildingPrefab = GameObject.FindGameObjectWithTag("").transform;
     }
     */
