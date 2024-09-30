@@ -5,8 +5,29 @@ using UnityEngine;
 public class ByggValet : MonoBehaviour
 {
     public GameObject[] prefabBuildings;
+    public GameObject aktivByggnad;
+    public GameObject Bobby;
 
-    ///Varje prefab ska kunna byta tag, ska finnas en "aktiv" tag så att 
-    ///spookybuilding och byggplacerare vet vade de ska göra.
+    private void Start()
+    {
+        
+        setAktivByggnad(0);
+    }
+
+    public void setAktivByggnad(int index)
+    {
+        if (index >= 0 && index < prefabBuildings.Length)
+        {
+            aktivByggnad = prefabBuildings[index];
+            Debug.Log("Aktiva byggnaden: " + aktivByggnad.name);
+            Bobby.SetActive(true); // gör byggare bob tillgänglig
+        }
+    }
+
+    public GameObject getAktivByggnad()
+    {
+        return aktivByggnad;
+        
+    }
 
 }

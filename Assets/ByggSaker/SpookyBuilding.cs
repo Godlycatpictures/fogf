@@ -4,30 +4,44 @@ using UnityEngine;
 
 public class SpookyBuilding : MonoBehaviour
 {
-    public GameObject spookBuild; // en preview
-    private GameObject currentSpookBuild; // Current ghost object
-    public Grid grid; // Reference to the Grid component
-
-    void Start()
-    {
-        currentSpookBuild = Instantiate(spookBuild); // Create ghost object
-        currentSpookBuild.SetActive(true);
-    }
+    
+    private GameObject currentSpookBuild;
+    public Grid grid;
+    public ByggValet aktivByggnad; // aktivbyggnad
 
     void Update()
     {
-        // Move ghost object with the mouse, snapping it to the grid
+        // aktivbyggnad^2
+        GameObject spookBuild = aktivByggnad.getAktivByggnad();
+
+        // "spök"byggnad
+        if (currentSpookBuild == null || currentSpookBuild.name != spookBuild.name + "(Clone)")
+        {
+            if (currentSpookBuild != null) Destroy(currentSpookBuild); 
+            currentSpookBuild = Instantiate(spookBuild); 
+            currentSpookBuild.SetActive(true);
+        }
+        if (Input.GetMouseButtonDown(1)) // onödig?
+        {
+            hejhejpreview(); // liksom den kallas vid ByggPlacerare.cs men osäker och orka ta bart
+        }
+
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3Int gridPosition = grid.WorldToCell(mouseWorldPos);
-        currentSpookBuild.transform.position = grid.CellToWorld(gridPosition);
-
         Vector3 finalPosition = grid.CellToWorld(gridPosition);
-        finalPosition.z = -9; // kamera saker (orka med layers än)
+        finalPosition.z = -9;
         currentSpookBuild.transform.position = finalPosition;
+
+        
     }
 
-    public void noHalloween()
+    public void hejhejpreview()
     {
-        currentSpookBuild.SetActive(false); // göm efter objekt blivit placerad
+        if (currentSpookBuild != null)
+        {
+            Destroy(currentSpookBuild);
+        }
     }
+
+
 }

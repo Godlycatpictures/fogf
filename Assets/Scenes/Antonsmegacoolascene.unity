@@ -542,6 +542,8 @@ GameObject:
   - component: {fileID: 1300113886}
   - component: {fileID: 1300113888}
   - component: {fileID: 1300113887}
+  - component: {fileID: 1300113890}
+  - component: {fileID: 1300113889}
   m_Layer: 5
   m_Name: minimaprender
   m_TagString: Untagged
@@ -603,6 +605,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1300113885}
   m_CullTransparentMesh: 1
+--- !u!114 &1300113889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300113885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ef3dd5353fe2af4b906e393f1fc3837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 855427423}
+  minimapRect: {fileID: 1300113886}
+  minimapCamera: {fileID: 76726436}
+  mapWorldWidth: 100
+  mapWorldHeight: 100
+--- !u!114 &1300113890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300113885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &1370970948
 GameObject:
   m_ObjectHideFlags: 0
