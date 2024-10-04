@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
 {
     private AIPath path;
     [SerializeField] private float moveSpeed;
-    [SerializeField] private Transform target;
+    [SerializeField] private Transform target;  // Player/Unit
     [SerializeField] private float stoppingDistance;
     [SerializeField] private float detectionRadius;
     [SerializeField] private float wanderRadius;
@@ -21,12 +21,26 @@ public class Enemy : MonoBehaviour
     {
         path = GetComponent<AIPath>();
         path.maxSpeed = moveSpeed;  // Ensure the speed is set on the AIPath component
+
+        if (target == null) // If no target is set, find the player dynamically
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player"); // Assuming the player has a "Player" tag
+            if (player != null)
+            {
+                target = player.transform;
+            }
+        }
+
         SetRandomWanderDestination(); // Set an initial random destination
         SetRandomWanderInterval();    // Set an initial random wander interval
     }
 
-    private void Update()
+    void Update()
     {
+        path.maxSpeed = moveSpeed;
+
+        if (target == null) return;  // Exit if there's no valid target
+
         float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
         // Check if the target is within the detection radius
