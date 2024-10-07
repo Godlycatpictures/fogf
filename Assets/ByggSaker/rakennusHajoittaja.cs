@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -8,7 +9,7 @@ public class rakennusHajoittaja : MonoBehaviour
 {
     
     public Grid grid; // Vilken grid
-    public LayerMask Byggnader; // 
+    public LayerMask Byggnader; // layer
 
     private void Start()
     {
