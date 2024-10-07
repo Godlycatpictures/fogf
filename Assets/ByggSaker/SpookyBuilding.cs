@@ -20,6 +20,7 @@ public class SpookyBuilding : MonoBehaviour
             if (currentSpookBuild != null) Destroy(currentSpookBuild); 
             currentSpookBuild = Instantiate(spookBuild); 
             currentSpookBuild.SetActive(true);
+            currentSpookBuild.layer = LayerMask.NameToLayer("ByggnaderPreview");
         }
         if (Input.GetMouseButtonDown(1)) // onödig?
         {
