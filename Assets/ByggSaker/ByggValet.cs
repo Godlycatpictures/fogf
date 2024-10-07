@@ -9,6 +9,7 @@ public class ByggValet : MonoBehaviour
     public GameObject aktivByggnad;
     public GameObject Bobby;
     public GameObject Borttagare;
+    public SpookyBuilding deleteremovebanish;
 
     private void Start()
     {
@@ -29,8 +30,10 @@ public class ByggValet : MonoBehaviour
 
     public void taBortTagareAvByggnader()
     {
+        deleteremovebanish.hejhejpreview();
         Bobby.SetActive(false);
         Borttagare.SetActive(true);
+
     }
     
 
