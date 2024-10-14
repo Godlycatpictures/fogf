@@ -4,28 +4,21 @@ using UnityEngine;
 
 public class UnitSelect : MonoBehaviour
 {
-    private GameObject selectedUnit;
-    void Start()    
-    {
-        
-    }
+    private GameObject selectedUnit;  
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            SelectUnit();
+            SelectOrDeselectUnit();
         }
-
     }
 
-    void SelectUnit()
+    void SelectOrDeselectUnit()
     {
-        //kollar vart musen är på skärmen och skcikar input när man clickar.
-        Vector2 mouseposition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        //skickar ut en raycast från där man klickar.
-        RaycastHit2D hit = Physics2D.Raycast(mouseposition, Vector2.zero);
+        RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
 
         if (hit.collider != null)
         {
@@ -33,26 +26,61 @@ public class UnitSelect : MonoBehaviour
 
             if (hitObject.CompareTag("Unit"))
             {
-                selectedUnit = hitObject;
-                Highlight(selectedUnit);
-                Debug.Log("Selected unit: " + selectedUnit.name);
-               
+                if (hitObject == selectedUnit)
+                {
+                    DeselectUnit();  
+                }
+                else
+                {
+                  
+                    if (selectedUnit != null)
+                    {
+                        DeselectUnit();
+                    }
+
+                    selectedUnit = hitObject;
+                    Highlight(selectedUnit);  
+
+                    Debug.Log("Selected unit: " + selectedUnit.name);
+
+                    ClickToMove clickToMove = FindObjectOfType<ClickToMove>();
+                    if (clickToMove != null)
+                    {
+                        clickToMove.AssignSelectedUnit(selectedUnit);
+                    }
+                }
             }
         }
     }
 
     void DeselectUnit()
     {
+        if (selectedUnit != null)
+        {
+            SpriteRenderer sr = selectedUnit.GetComponent<SpriteRenderer>();
+            if (sr != null)
+            {
+                sr.color = Color.blue; 
+            }
 
-    } 
-    
+            Debug.Log("Deselected unit: " + selectedUnit.name);
+
+            selectedUnit = null;
+
+            ClickToMove clickToMove = FindObjectOfType<ClickToMove>();
+            if (clickToMove != null)
+            {
+                clickToMove.AssignSelectedUnit(null);  
+            }
+        }
+    }
+
     void Highlight(GameObject unit)
     {
         SpriteRenderer sr = unit.GetComponent<SpriteRenderer>();
-
         if (sr != null)
         {
-            sr.color = Color.green;
+            sr.color = Color.green; 
         }
     }
 }

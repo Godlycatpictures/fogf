@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8544559657968189800}
   - component: {fileID: 2708551105569777287}
   - component: {fileID: 5891076747902805073}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: byggnad31
   m_TagString: Untagged
   m_Icon: {fileID: 0}

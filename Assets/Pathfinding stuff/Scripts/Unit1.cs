@@ -2,53 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+
 public class Unit1 : MonoBehaviour
 {
-    private AIPath path;
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private float stoppingDistance;
-    private float distanceToTarget;
-    public Transform target;
+    private AIPath path; 
+    [SerializeField] private float moveSpeed;  
+    [SerializeField] private float stoppingDistance;  
+    private float distanceToTarget;  
+    private Vector3 targetPosition;
+    private bool isMoving = false; 
+
     void Start()
     {
-        path = GetComponent<AIPath>();
+        path = GetComponent<AIPath>(); 
+        targetPosition = transform.position;  
+    }
+
+    void Update()
+    {
+        path.maxSpeed = moveSpeed; 
+        if (isMoving)
+        {
+            distanceToTarget = Vector2.Distance(transform.position, targetPosition); 
+
+            if (distanceToTarget < stoppingDistance) 
+            {
+                path.destination = transform.position; 
+                isMoving = false; 
+            }
+            else
+            {
+                path.destination = targetPosition;  
+            }
+        }
     }
 
    
-    void Update()
+    public void SetTarget(Vector3 newTargetPosition)
     {
-        path.maxSpeed = moveSpeed;
-
-        //kollar efter GameObject med tag("target")
-        target = GameObject.FindGameObjectWithTag("Target").transform;
-
-        
-        distanceToTarget = Vector2.Distance(transform.position, target.position);
-        if(distanceToTarget < stoppingDistance)
-        {
-            path.destination = transform.position;
-        }
-        else
-        {
-            path.destination = target.position;
-        }
-    }
-    public void SetTarget(Transform NewTarget)
-    {
-        target = NewTarget;
-    }
-
-    private void OnCollisionEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Target"))
-        {
-            StartCoroutine(DestroyTarget(other.gameObject, 1f));
-        }
-    }
-    private IEnumerator DestroyTarget(GameObject targetObject, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        Destroy(targetObject);
-        Debug.Log("Target destroyed: " + targetObject.name);
+        targetPosition = newTargetPosition; 
+        isMoving = true;  
     }
 }

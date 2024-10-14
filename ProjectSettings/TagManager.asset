@@ -3,9 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Unit
-  - Target
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -13,9 +11,9 @@ TagManager:
   - 
   - Water
   - UI
-  - Minimap
-  - Obstacle
-  - unit
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -40,9 +38,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background
-    uniqueID: 2260886595
-    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

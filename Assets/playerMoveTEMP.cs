@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClickToMove : MonoBehaviour
+public class Click : MonoBehaviour
 {
     public float speed = 5f; // Adjust movement speed
 
