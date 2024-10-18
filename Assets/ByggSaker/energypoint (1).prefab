@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8806514250111137932
+--- !u!1 &7961197629509209194
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,53 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8544559657968189800}
-  - component: {fileID: 2708551105569777287}
-  - component: {fileID: 3680038716684427265}
-  - component: {fileID: 6245263600898796362}
-  - component: {fileID: 4843069155056767188}
-  m_Layer: 8
-  m_Name: byggnad31
-  m_TagString: Untagged
+  - component: {fileID: 7599566103743074943}
+  - component: {fileID: 6640390123901273872}
+  - component: {fileID: 8659226788410721010}
+  - component: {fileID: 6321357602313976223}
+  - component: {fileID: 8514424161587593356}
+  m_Layer: 0
+  m_Name: energypoint (1)
+  m_TagString: coal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8544559657968189800
+--- !u!4 &7599566103743074943
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8806514250111137932}
+  m_GameObject: {fileID: 7961197629509209194}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2, y: 0.5, z: -0.06575657}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &2708551105569777287
+--- !u!114 &6640390123901273872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7961197629509209194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d4eb07c420e37d4fbfdc3f28ec7332f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coal: 1
+--- !u!212 &8659226788410721010
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8806514250111137932}
+  m_GameObject: {fileID: 7961197629509209194}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -76,8 +89,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -178388755, guid: ab0dede5fe3a00a43b04a3288e79f33b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 3625043607559282579, guid: fdcc9a5f88bb0ef488e758e75d71bdce, type: 3}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -87,13 +100,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &3680038716684427265
+--- !u!60 &6321357602313976223
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8806514250111137932}
+  m_GameObject: {fileID: 7961197629509209194}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -123,7 +136,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
+    oldSize: {x: 1, y: 0.5}
     newSize: {x: 1, y: 0.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -131,46 +144,19 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.78125, y: 0.75}
-      - {x: 0.65625, y: 1}
-      - {x: 0.09375, y: 1}
-      - {x: 0.03125, y: 0.96875}
-      - {x: -0.03125, y: 0.625}
-      - {x: -1, y: 0.03125}
-      - {x: -1, y: -0.34375}
-      - {x: -0.28125, y: -0.75}
-      - {x: 0.15625, y: -1}
-      - {x: 0.53125, y: -1}
-      - {x: 0.71875, y: -0.90625}
-      - {x: 0.71875, y: -0.59375}
-      - {x: 0.65625, y: -0.5625}
-      - {x: 0.78125, y: -0.125}
+    - - {x: 0, y: 0.25}
+      - {x: -0.5, y: 0.007419616}
+      - {x: -0.013287067, y: -0.24622446}
+      - {x: 0.5, y: 0}
   m_UseDelaunayMesh: 0
---- !u!114 &6245263600898796362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8806514250111137932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b9249dffe5228649942163a01d62731, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  exracting: 0
-  extractionPause: 10
-  tidsPress: 60
-  kolkolkolkolkol: 5
-  imJustHereForCoal: {fileID: 5486111082880026155, guid: 629b3b938ffe0ea459bc3b06fb48c1aa, type: 3}
---- !u!50 &4843069155056767188
+--- !u!50 &8514424161587593356
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8806514250111137932}
+  m_GameObject: {fileID: 7961197629509209194}
   m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
