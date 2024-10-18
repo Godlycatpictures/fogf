@@ -87,7 +87,7 @@ public class Enemy : MonoBehaviour
         if (wanderTimer >= currentWanderInterval)
         {
             SetRandomWanderDestination();
-            SetRandomWanderInterval(); 
+            SetRandomWanderInterval();
             wanderTimer = 0;
         }
 
