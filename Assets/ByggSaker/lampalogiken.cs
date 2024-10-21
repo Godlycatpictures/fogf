@@ -8,7 +8,8 @@ public class lampalogiken : MonoBehaviour
 
     public bool harLedning = false;
     public float lampRange = 10f;
-    
+    public resourcemanagerscript imJustHereForCoal;
+
     public GameObject annanLampa;
 
     private void FixedUpdate()

@@ -6,8 +6,11 @@ public class extractorlogik : MonoBehaviour
 {
     public bool exracting = false;
     public float tidsPress = 10f;
-    public float kolkolkolkolkol = 5;
+    public int kolkolkolkolkol = 5;
     public resourcemanagerscript imJustHereForCoal;
+    public bool placerad = false;
+    public int antalloops = 0;
+
 
     // Start is called before the first frame update
     void Start()
@@ -18,33 +21,47 @@ public class extractorlogik : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (exracting)
+        if (exracting && placerad)
         {
             tidsPress -= Time.deltaTime;
 
             if (tidsPress <= 0) // ger 5 kol per 10 sec
             {
                 extractorReactor();
-                tidsPress = 10;
-                
+                tidsPress = 10f;
             }
         } 
     }
     void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("collision");
-        if (other.gameObject.CompareTag("coal")) // 
+
+        if (placerad && other.gameObject.CompareTag("coal")) // 
         {
-            // start exractorreactor
+                // start exractorreactor
             Debug.Log("kolkolkolkol");
             exracting = true;
         }
+        
+        
+    }
+    private void FixedUpdate()
+    {
+        
     }
 
     private void extractorReactor()
     {
-        imJustHereForCoal.totalKolManHar += kolkolkolkolkol; // kol plus är lika med kol
-        Debug.Log("du har nu" + imJustHereForCoal.totalKolManHar + " st. kol");
+        if (antalloops < 6)
+        {
+            antalloops++;
+            imJustHereForCoal.totalKolManHar += kolkolkolkolkol; // kol plus är lika med kol
+            Debug.Log("du har nu " + imJustHereForCoal.totalKolManHar + " st. kol");
+        } else
+        {
+            exracting = false;
+        }
+        
     }
 
 }

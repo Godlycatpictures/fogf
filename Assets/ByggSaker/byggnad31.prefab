@@ -159,8 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exracting: 0
-  extractionPause: 10
-  tidsPress: 60
+  tidsPress: 10
   kolkolkolkolkol: 5
   imJustHereForCoal: {fileID: 5486111082880026155, guid: 629b3b938ffe0ea459bc3b06fb48c1aa, type: 3}
 --- !u!50 &4843069155056767188

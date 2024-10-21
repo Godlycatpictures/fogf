@@ -34,6 +34,12 @@ public class ByggPlacerare : MonoBehaviour
                 newBuilding.layer = LayerMask.NameToLayer("Byggnader"); // rätt layer
                 Debug.Log("byggnad placerad vid: " + finalPosition);
 
+                extractorlogik extractor = newBuilding.GetComponent<extractorlogik>();
+                if (extractor != null)
+                {
+                    extractor.placerad = true;
+                }
+
             }
             else
             {
