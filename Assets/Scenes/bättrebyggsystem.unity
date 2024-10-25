@@ -518,6 +518,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7381002361321590817, guid: 891609f7c8e15e646ad99822ab9fed25, type: 3}
+      propertyPath: sceneInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: 5dff12e62444a1b458df3970508b156b, type: 2}
+    - target: {fileID: 7381002361321590817, guid: 891609f7c8e15e646ad99822ab9fed25, type: 3}
       propertyPath: aktivByggnad
       value: 
       objectReference: {fileID: 1107841940738929340}
@@ -808,6 +812,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: resourcemanager
       objectReference: {fileID: 0}
+    - target: {fileID: 5486111082880026155, guid: 629b3b938ffe0ea459bc3b06fb48c1aa, type: 3}
+      propertyPath: sceneInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: 5dff12e62444a1b458df3970508b156b, type: 2}
     - target: {fileID: 5486111082880026155, guid: 629b3b938ffe0ea459bc3b06fb48c1aa, type: 3}
       propertyPath: totalKolManHar
       value: 0

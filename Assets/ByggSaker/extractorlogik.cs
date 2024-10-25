@@ -1,67 +1,75 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-public class extractorlogik : MonoBehaviour
+
+namespace coal
 {
-    public bool exracting = false;
-    public float tidsPress = 10f;
-    public int kolkolkolkolkol = 5;
-    public resourcemanagerscript imJustHereForCoal;
-    public bool placerad = false;
-    public int antalloops = 0;
-
-
-    // Start is called before the first frame update
-    void Start()
+    public class extractorlogik : MonoBehaviour
     {
-        
-    }
+        public bool exracting = false;
+        public float tidsPress = 10f;
+        public int kolkolkolkolkol = 5;
+        public bool placerad = false;
+        public int antalloops = 0;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (exracting && placerad)
+        public SceneInfo sceneInfo; // scene info för kol o sånt
+
+        // Start is called before the first frame update
+        void Start()
         {
-            tidsPress -= Time.deltaTime;
 
-            if (tidsPress <= 0) // ger 5 kol per 10 sec
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (exracting && placerad)
             {
-                extractorReactor();
-                tidsPress = 10f;
+                tidsPress -= Time.deltaTime;
+
+                if (tidsPress <= 0) // ger 5 kol per 10 sec
+                {
+                    extractorReactor();
+                    tidsPress = 10f;
+                }
             }
-        } 
-    }
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        Debug.Log("collision");
 
-        if (placerad && other.gameObject.CompareTag("coal")) // 
+        }
+        void OnTriggerEnter2D(Collider2D other)
         {
+            Debug.Log("collision");
+
+            if (placerad && other.gameObject.CompareTag("coal")) // 
+            {
                 // start exractorreactor
-            Debug.Log("kolkolkolkol");
-            exracting = true;
-        }
-        
-        
-    }
-    private void FixedUpdate()
-    {
-        
-    }
+                Debug.Log("kolkolkolkol");
+                exracting = true;
+            }
 
-    private void extractorReactor()
-    {
-        if (antalloops < 6)
-        {
-            antalloops++;
-            imJustHereForCoal.totalKolManHar += kolkolkolkolkol; // kol plus är lika med kol
-            Debug.Log("du har nu " + imJustHereForCoal.totalKolManHar + " st. kol");
-        } else
-        {
-            exracting = false;
-        }
-        
-    }
 
+        }
+        private void FixedUpdate()
+        {
+
+        }
+
+        private void extractorReactor()
+        {
+            if (antalloops < 6)
+            {
+                antalloops++;
+                sceneInfo.energyResource += kolkolkolkolkol; // kol plus är lika med kol
+                Debug.Log("du har nu " + sceneInfo.energyResource + " st. kol");
+            }
+            else
+            {
+                exracting = false;
+            }
+
+        }
+
+    }
 }
+

@@ -6,15 +6,22 @@ using UnityEngine;
 public class lampalogiken : MonoBehaviour
 {
 
-    public bool harLedning = false;
-    public float lampRange = 10f;
-    public resourcemanagerscript imJustHereForCoal;
+    public bool harLedning = false; // ifall den är nära npnting nära en generator
+    public float lampRange = 10f; // med den här radien ish
+    public bool placerad = false;
 
-    public GameObject annanLampa;
 
-    private void FixedUpdate()
+    public SceneInfo sceneInfo; // scene info för kol o sånt
+
+    private void Start()
     {
-        
+        if (placerad)
+        {
+            drainingCoal();
+        }
+    }
+    void drainingCoal()
+    {
 
     }
 

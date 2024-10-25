@@ -150,8 +150,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   harLedning: 0
   lampRange: 10
-  imJustHereForCoal: {fileID: 5486111082880026155, guid: 629b3b938ffe0ea459bc3b06fb48c1aa, type: 3}
   annanLampa: {fileID: 0}
+  sceneInfo: {fileID: 11400000, guid: 5dff12e62444a1b458df3970508b156b, type: 2}
 --- !u!1 &8098055193608452297
 GameObject:
   m_ObjectHideFlags: 0

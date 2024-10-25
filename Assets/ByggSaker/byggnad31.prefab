@@ -161,7 +161,9 @@ MonoBehaviour:
   exracting: 0
   tidsPress: 10
   kolkolkolkolkol: 5
-  imJustHereForCoal: {fileID: 5486111082880026155, guid: 629b3b938ffe0ea459bc3b06fb48c1aa, type: 3}
+  placerad: 0
+  antalloops: 0
+  sceneInfo: {fileID: 11400000, guid: 5dff12e62444a1b458df3970508b156b, type: 2}
 --- !u!50 &4843069155056767188
 Rigidbody2D:
   serializedVersion: 4
