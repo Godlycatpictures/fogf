@@ -148,6 +148,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eab20d69a09e46b4389564c943a2bbf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  harLedning: 0
+  lampRange: 10
+  annanLampa: {fileID: 0}
+  sceneInfo: {fileID: 11400000, guid: 5dff12e62444a1b458df3970508b156b, type: 2}
 --- !u!1 &8098055193608452297
 GameObject:
   m_ObjectHideFlags: 0

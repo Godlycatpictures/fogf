@@ -1,21 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-public class resourcemanagerscript : MonoBehaviour
+namespace coal
 {
-
-    public float totalKolManHar;
-
-    // Start is called before the first frame update
-    void Start()
+    public class resourcemanagerscript : MonoBehaviour
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public SceneInfo sceneInfo; // scene info för kol o sånt
+
+        private void Start()
+        {
+            sceneInfo.energyResource = 0;
+            Debug.Log("du borde ha 0 koll stämmer det då du har: " + sceneInfo.energyResource + " st kol");
+        }
     }
 }
