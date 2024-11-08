@@ -6,7 +6,7 @@ public class MusicManager : MonoBehaviour
 {
     public static MusicManager instance = null;  // Singleton instance
 
-    public AudioSource audioSource;  // Audio source component
+    public AudioSource ambientSource;  // Audio source component
     public AudioClip[] backgroundTracks;  // Array of background music tracks
     private int currentTrackIndex = 0;
 
@@ -25,12 +25,17 @@ public class MusicManager : MonoBehaviour
     
     void Start()
     {
-
+        PlayTrack(0);   
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void MuteAudio()
+    {
+        ambientSource.Stop();
     }
 }
