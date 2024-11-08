@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 35fa95466118b1c4db7a5d01056b5a7c
+guid: 1798522b9a8822b4bb2960887fd88c1d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -111,8 +111,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7bd89535044eec942ac98ca97a7c205e
-      internalID: 1890481006
+      spriteID: 514ed03752fbd1648917d44d020c58ed
+      internalID: 2025705132
       vertices: []
       indices: 
       edges: []
@@ -132,8 +132,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc25d9df439a6a9468dec5eecb2b1463
-      internalID: 1987525647
+      spriteID: 65952d26a33f0d14d8424d646075fb0a
+      internalID: 1122981443
       vertices: []
       indices: 
       edges: []
@@ -153,8 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af717d2459dd7554a863a5e24cf15fbe
-      internalID: -1798977159
+      spriteID: c6c43a746ef48f94ba289843f1d81aea
+      internalID: 991981242
       vertices: []
       indices: 
       edges: []
@@ -174,8 +174,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 755720fb83375de41b799855c5da3f36
-      internalID: -1900681582
+      spriteID: aecf11ea0638b394a98735864f48992a
+      internalID: 889626356
       vertices: []
       indices: 
       edges: []
@@ -195,8 +195,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d1753fbc4a842754fb8cd084f6027f16
-      internalID: -269853023
+      spriteID: 8f76d5f664dde79479388fd8838c7591
+      internalID: 1786662181
       vertices: []
       indices: 
       edges: []
@@ -216,8 +216,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1950c286d03db414788591699caf6baf
-      internalID: -154624670
+      spriteID: cb07a1a72d2eef540863e9654fb508dd
+      internalID: 1146724218
       vertices: []
       indices: 
       edges: []
@@ -237,8 +237,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 54d4fc05c5337e34da5642ab4b333a08
-      internalID: 451840048
+      spriteID: 8727bacc273dc54458bfc1bc3461a4b6
+      internalID: -2102240136
       vertices: []
       indices: 
       edges: []
@@ -258,8 +258,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b206cd179fe00a43a010584a74199a5
-      internalID: 1318221416
+      spriteID: dcd9931cadfc3734a85595086ab338af
+      internalID: -1121084449
       vertices: []
       indices: 
       edges: []
@@ -279,8 +279,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0883d7da46437f04484c363e6e7600c9
-      internalID: 1825559606
+      spriteID: 7e8b7ae13110f274e96d4fe3a184950c
+      internalID: 62172036
       vertices: []
       indices: 
       edges: []
@@ -300,8 +300,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 86fdb638c64e1e54aa3528599c6f23d2
-      internalID: -598183505
+      spriteID: 24edeea15abcee94c806d89945822e80
+      internalID: 1461342503
       vertices: []
       indices: 
       edges: []
@@ -317,16 +317,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Angler-walk_0: 1890481006
-      Angler-walk_1: 1987525647
-      Angler-walk_2: -1798977159
-      Angler-walk_3: -1900681582
-      Angler-walk_4: -269853023
-      Angler-walk_5: -154624670
-      Angler-walk_6: 451840048
-      Angler-walk_7: 1318221416
-      Angler-walk_8: 1825559606
-      Angler-walk_9: -598183505
+      Angler-walk_0: 2025705132
+      Angler-walk_1: 1122981443
+      Angler-walk_2: 991981242
+      Angler-walk_3: 889626356
+      Angler-walk_4: 1786662181
+      Angler-walk_5: 1146724218
+      Angler-walk_6: -2102240136
+      Angler-walk_7: -1121084449
+      Angler-walk_8: 62172036
+      Angler-walk_9: 1461342503
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
