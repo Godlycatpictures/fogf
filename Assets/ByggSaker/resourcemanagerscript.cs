@@ -4,14 +4,14 @@ using UnityEditor;
 using UnityEngine;
 
 
-    public class resourcemanagerscript : MonoBehaviour
+public class resourcemanagerscript : MonoBehaviour
+{
+
+    public SceneInfo sceneInfo; // scene info för kol o sånt
+
+    private void Start()
     {
-
-        public SceneInfo sceneInfo; // scene info för kol o sånt
-
-        private void Start()
-        {
-            sceneInfo.energyResource = 0;
-            Debug.Log("du borde ha 0 koll stämmer det då du har: " + sceneInfo.energyResource + " st kol");
-        }
+        sceneInfo.energyResource = 0;
+        Debug.Log("du borde ha 0 koll stämmer det då du har: " + sceneInfo.energyResource + " st kol");
     }
+}

@@ -10,6 +10,7 @@ public class ByggValet : MonoBehaviour
     public GameObject Bobby;
     public GameObject Borttagare;
     public SpookyBuilding deleteremovebanish;
+    public ByggPlacerare byggPlacerare;
 
     private void Start()
     {
@@ -21,10 +22,16 @@ public class ByggValet : MonoBehaviour
     {
         if (index >= 0 && index < prefabBuildings.Length)
         {
+
             aktivByggnad = prefabBuildings[index]; // id av byggnaden (i en array)
             Debug.Log("Aktiva byggnaden: " + aktivByggnad.name);
             Bobby.SetActive(true); // gör byggare bob tillgänglig
             Borttagare.SetActive(false);
+
+            if (byggPlacerare != null)
+            {
+                byggPlacerare.SetPreviewBuilding(aktivByggnad);
+            }
         }
     }
 
