@@ -25,7 +25,7 @@ public class MusicManager : MonoBehaviour
     
     void Start()
     {
-        PlayTrack(0);   
+        //PlayTrack(0);   
     }
 
     // Update is called once per frame

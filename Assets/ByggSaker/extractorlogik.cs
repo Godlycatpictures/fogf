@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-
-namespace coal
-{
     public class extractorlogik : MonoBehaviour
     {
         public bool exracting = false;
@@ -35,7 +32,6 @@ namespace coal
                     tidsPress = 10f;
                 }
             }
-
         }
         void OnTriggerEnter2D(Collider2D other)
         {
@@ -48,10 +44,6 @@ namespace coal
                 exracting = true;
             }
 
-
-        }
-        private void FixedUpdate()
-        {
 
         }
 
@@ -71,5 +63,5 @@ namespace coal
         }
 
     }
-}
+
 

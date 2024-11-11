@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace coal
-{
+
     public class resourcemanagerscript : MonoBehaviour
     {
 
@@ -16,4 +15,3 @@ namespace coal
             Debug.Log("du borde ha 0 koll stämmer det då du har: " + sceneInfo.energyResource + " st kol");
         }
     }
-}

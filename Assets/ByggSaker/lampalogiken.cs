@@ -11,6 +11,7 @@ public class lampalogiken : MonoBehaviour
     public bool placerad = false;
 
 
+
     public SceneInfo sceneInfo; // scene info för kol o sånt
 
     private void Start()

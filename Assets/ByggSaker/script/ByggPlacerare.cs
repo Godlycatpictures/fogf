@@ -1,81 +1,66 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace coal
-{
+
     public class ByggPlacerare : MonoBehaviour
     {
-        public Grid grid; // Vilken grid
-        public ByggValet aktivByggnad; // aktiv byggnad via annan skript
-        public SpookyBuilding deleteremovebanish; // hatar den här, hatar hur det blev komplicerat
-        public LayerMask Byggnader;
+        public Grid grid; // grid
+        public ByggValet aktivByggnad; // vilken byggnad via byggvalet.cs
+        public LayerMask Byggnader; // rätt lzyer
 
-        public SceneInfo sceneInfo; // scene info för kol o sånt
+        private Dictionary<Vector3Int, GameObject> placeradeByggnader = new Dictionary<Vector3Int, GameObject>(); // plasts
 
-        private void Start()
-        {
-            BobGone();
-        }
         void Update()
         {
             if (Input.GetMouseButtonDown(0) && !IntePlaceraVidKnappar())
             {
-                Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition); // Tar musens position
-                Vector3Int gridPosition = grid.WorldToCell(mouseWorldPos); // Konverterar musen till cell/grid
-                Vector3 finalPosition = grid.CellToWorld(gridPosition); // Grid snappar byggnaden till närmsta cell (till musen)
-                finalPosition.z = -8;
+                Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition); // tar musens porition
+                Vector3Int gridPosition = grid.WorldToCell(mouseWorldPos); // tar musens porition 2
 
-                Collider2D hitCollider = Physics2D.OverlapPoint(finalPosition, Byggnader);
-                Debug.Log("tittar på: " + finalPosition + " - upptagen: " + (hitCollider != null));
-
-
-                if (hitCollider == null) // tittar ifall platsen är ledig
+                if (!placeradeByggnader.ContainsKey(gridPosition))
                 {
-                    GameObject buildingPrefab = aktivByggnad.getAktivByggnad();
-                    GameObject newBuilding = Instantiate(buildingPrefab, finalPosition, Quaternion.identity);
-                    newBuilding.layer = LayerMask.NameToLayer("Byggnader"); // rätt layer
-                    Debug.Log("byggnad placerad vid: " + finalPosition);
-
-                    extractorlogik extractor = newBuilding.GetComponent<extractorlogik>();
-                    if (extractor != null)
-                    {
-                        extractor.placerad = true;
-                    }
-                    lampalogiken lampa = newBuilding.GetComponent<lampalogiken>();
-                    if (lampa != null)
-                    {
-                        lampa.placerad = true;
-                    }
-
+                    placeraByggnaden(gridPosition); // byggna till poritionsnen
                 }
                 else
                 {
-                    Debug.Log("ej placerbar här!(redan tagen av annan byggnad)" + hitCollider.name);
+                    Debug.Log("Ej placerbar här! (redan tagen av annan byggnad) " + placeradeByggnader[gridPosition].name);
                 }
-
-
             }
-            if (Input.GetMouseButtonDown(1))
+            else if (Input.GetMouseButtonDown(1))
             {
                 BobGone();
             }
         }
 
+        private void placeraByggnaden(Vector3Int gridPosition)
+        {
+            Vector3 finalPosition = grid.CellToWorld(gridPosition); // finala positionen plus -8 på z värdet
+            finalPosition.z = -8;
+
+            GameObject buildingPrefab = aktivByggnad.getAktivByggnad(); // väljer aktiva byggnaden &
+            GameObject newBuilding = Instantiate(buildingPrefab, finalPosition, Quaternion.identity); // placerar den
+            newBuilding.layer = LayerMask.NameToLayer("Byggnader"); // på den korrekta layern
+
+            // sparar i hashen
+            placeradeByggnader[gridPosition] = newBuilding;
+
+            // sparar vilken byggnad placeras
+            if (newBuilding.TryGetComponent<extractorlogik>(out var extractor))
+                extractor.placerad = true;
+            if (newBuilding.TryGetComponent<lampalogiken>(out var lampa))
+                lampa.placerad = true;
+
+            Debug.Log("Byggnad placerad vid: " + finalPosition);
+        }
+
         public void BobGone()
         {
-            gameObject.SetActive(false);
-
-            deleteremovebanish.hejhejpreview(); // va inte roligt att fixa det här
+            gameObject.SetActive(false); // hejdå byggare bob
         }
 
         private bool IntePlaceraVidKnappar()
         {
-            return EventSystem.current.IsPointerOverGameObject();
+            return EventSystem.current.IsPointerOverGameObject(); // inte vid knappar
         }
-
-
     }
-
-}
