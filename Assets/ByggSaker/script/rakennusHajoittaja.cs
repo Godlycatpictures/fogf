@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
@@ -10,6 +11,8 @@ public class rakennusHajoittaja : MonoBehaviour
     
     public Grid grid; // Vilken grid
     public LayerMask Byggnader; // layer
+
+    public static event Action<Vector3> ByggnadBorttagenEvent; // säger till allt och alla att en byggnad har borttagits
 
     private void Start()
     {
@@ -29,8 +32,17 @@ public class rakennusHajoittaja : MonoBehaviour
 
             if (hit.collider != null) // fanns det en byggnad där
             {
+
+                Vector3 buildingPosition = hit.collider.transform.position; // position (behövs för eventsystem
+                Vector3Int gridPosition = grid.WorldToCell(buildingPosition); // till kordinater
+
                 Destroy(hit.collider.gameObject); // byggnad borta :c
+
                 Debug.Log("byggnad borta :C");
+
+                // Trigger the event to notify nearby lamps
+                ByggnadBorttagenEvent?.Invoke(buildingPosition);
+
             }
             else
             {

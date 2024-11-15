@@ -35,8 +35,6 @@ public class extractorlogik : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("collision");
-
         if (placerad && other.gameObject.CompareTag("coal")) // 
         {
             // start exractorreactor
@@ -59,9 +57,7 @@ public class extractorlogik : MonoBehaviour
         {
             exracting = false;
         }
-
     }
-
 }
 
 

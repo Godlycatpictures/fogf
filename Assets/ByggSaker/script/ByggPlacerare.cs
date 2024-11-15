@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -10,6 +11,8 @@ public class ByggPlacerare : MonoBehaviour
     public LayerMask Byggnader; // rätt layer
     public GameObject enKusligByggnad; // orka med två skripts previews är här från och med nu
 
+    // eventsystem för bättre saker
+    public static event Action<Vector3> ByggnadPlaceradEvent; // säger till allt och alla att en byggnad har placerats
 
     private Dictionary<Vector3Int, GameObject> placeradeByggnader = new Dictionary<Vector3Int, GameObject>(); // plasts
 
@@ -67,8 +70,8 @@ public class ByggPlacerare : MonoBehaviour
         }
 
         enKusligByggnad = Instantiate(buildingPrefab, Vector3.zero, Quaternion.identity);
-        enKusligByggnad.layer = LayerMask.NameToLayer("Preview");
-        enKusligByggnad.GetComponent<Collider>().enabled = false;  // "placerar" den x3
+        enKusligByggnad.layer = LayerMask.NameToLayer("ByggnaderPreview");
+        
     }
 
 
@@ -91,6 +94,7 @@ public class ByggPlacerare : MonoBehaviour
             lampa.placerad = true;
 
         Debug.Log("Byggnad placerad vid: " + finalPosition);
+        ByggnadPlaceradEvent?.Invoke(finalPosition);
     }
 
     public void BobGone()

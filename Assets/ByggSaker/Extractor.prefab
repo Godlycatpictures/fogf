@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 6245263600898796362}
   - component: {fileID: 4843069155056767188}
   m_Layer: 8
-  m_Name: byggnad31
-  m_TagString: Untagged
+  m_Name: Extractor
+  m_TagString: extractor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

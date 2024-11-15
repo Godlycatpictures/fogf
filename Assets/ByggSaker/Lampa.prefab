@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5890339463041061659}
   - component: {fileID: 7487936739381719658}
   m_Layer: 8
-  m_Name: byggnad11
+  m_Name: Lampa
   m_TagString: lampa
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,8 +149,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   harLedning: 0
-  lampRange: 10
-  annanLampa: {fileID: 0}
+  lampRange: 5
+  placerad: 0
   sceneInfo: {fileID: 11400000, guid: 5dff12e62444a1b458df3970508b156b, type: 2}
 --- !u!1 &8098055193608452297
 GameObject:

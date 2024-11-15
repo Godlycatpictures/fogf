@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 417521878977784617}
   - component: {fileID: 6264061769384315358}
   m_Layer: 0
-  m_Name: byggnad 44
-  m_TagString: Untagged
+  m_Name: Generator
+  m_TagString: generator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

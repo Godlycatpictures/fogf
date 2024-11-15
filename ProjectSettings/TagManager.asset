@@ -7,6 +7,8 @@ TagManager:
   - lampa
   - coal
   - rmanager
+  - generator
+  - extractor
   layers:
   - Default
   - TransparentFX
