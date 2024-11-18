@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class LampOnOff : MonoBehaviour
 {
-    public GameObject maskObject;
+    public GameObject lightObject;
 
     private void Start()
     {
-        HideMask();
+        HideLight();
     }
-    public void HideMask()
+    public void HideLight()
     {
-        maskObject.SetActive(false);
+        lightObject.SetActive(false);
     }
 
    
-    public void ShowMask()
+    public void ShowLight()
     {
-        maskObject.SetActive(true); 
+        lightObject.SetActive(true); 
     }
 }
 
