@@ -9,8 +9,8 @@ public class lampalogiken : MonoBehaviour
     public bool harLedning = false; // ifall den är nära npnting nära en generator
     public float lampRange = 5f; // med den här radien ish
     public bool placerad = false;
-
-
+    public int kolUppslukare;
+    public float UppslukningsTid = 30f;
 
     public SceneInfo sceneInfo; // scene info för kol o sånt
 
@@ -29,19 +29,28 @@ public class lampalogiken : MonoBehaviour
 
     private void Start()
     {
-        if (placerad)
+        tittaLedning();
+    }
+    private void Update()
+    {
+        if (harLedning && placerad)
+        {
+            // här skicka såken så att lampan är på till relaterad skript
+
+            UppslukningsTid -= Time.deltaTime;
+            if (UppslukningsTid <= 0)
+            {
+                /// tar bort x kol beroende på kolUppslukaren (som generatorn kan göre mer effektiv)
+                /// tänker att den skulle kunna antingen ändra på tiden eller andel kol den tar varje uppslukningstid
+                UppslukningsTid = 30;
+                sceneInfo.energyResource -= kolUppslukare;
+                Debug.Log(kolUppslukare + " kol användts");
+
+            }
+        } else
         {
             tittaLedning();
-            if (harLedning)
-            {
-                drainingCoal();
-            }
-
         }
-    }
-    void drainingCoal()
-    {
-
     }
 
     private void ByggnaderHarUppdaterats(Vector3 buildingPosition) // måste checka sakerna igen
@@ -95,6 +104,7 @@ public class lampalogiken : MonoBehaviour
             {
                 harLedning = false;
                 Debug.Log("ingen ledning från lampa");
+                break;
             }
         }
     }

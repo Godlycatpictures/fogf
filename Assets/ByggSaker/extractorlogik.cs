@@ -41,8 +41,6 @@ public class extractorlogik : MonoBehaviour
             Debug.Log("kolkolkolkol");
             exracting = true;
         }
-
-
     }
 
     private void extractorReactor()

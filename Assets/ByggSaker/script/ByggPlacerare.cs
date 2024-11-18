@@ -16,6 +16,8 @@ public class ByggPlacerare : MonoBehaviour
 
     private Dictionary<Vector3Int, GameObject> placeradeByggnader = new Dictionary<Vector3Int, GameObject>(); // plasts
 
+    public SceneInfo sceneInfo; // scene info för kol o sånt
+
     void Update()
     {
 
