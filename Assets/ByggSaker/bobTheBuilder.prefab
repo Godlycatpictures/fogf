@@ -46,9 +46,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 0}
-  buildingPrefab: {fileID: 0}
   aktivByggnad: {fileID: 0}
-  deleteremovebanish: {fileID: 5278254197158539145}
+  Byggnader:
+    serializedVersion: 2
+    m_Bits: 0
+  enKusligByggnad: {fileID: 0}
+  sceneInfo: {fileID: 11400000, guid: 5dff12e62444a1b458df3970508b156b, type: 2}
 --- !u!114 &5278254197158539145
 MonoBehaviour:
   m_ObjectHideFlags: 0
