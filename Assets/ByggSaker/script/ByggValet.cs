@@ -36,10 +36,7 @@ public class ByggValet : MonoBehaviour
 
     public void taBortTagareAvByggnader()
     {
-<<<<<<< Updated upstream
-=======
         
->>>>>>> Stashed changes
         Bobby.SetActive(false);
         Borttagare.SetActive(true);
 
