@@ -47,9 +47,6 @@ public class lampalogiken : MonoBehaviour
                 Debug.Log(kolUppslukare + " kol användts");
 
             }
-        } else
-        {
-            tittaLedning();
         }
     }
 

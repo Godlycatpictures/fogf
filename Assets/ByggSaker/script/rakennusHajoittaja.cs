@@ -14,6 +14,7 @@ public class rakennusHajoittaja : MonoBehaviour
 
     public static event Action<Vector3> ByggnadBorttagenEvent; // säger till allt och alla att en byggnad har borttagits
 
+
     private void Start()
     {
         Debug.Log("start försötarer");
@@ -23,33 +24,46 @@ public class rakennusHajoittaja : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && !IntePlaceraVidKnappar()) // egentligen behövs det inte tittas ifall den placerar vid knappar då den inte kan placera, men bra då jag vet inte orka ta bort den kan va bra för att förebygga problem som kan förekomma ifall man skulle kunna ta bort gridden vid knapparna.
         {
-            Debug.Log("klick");
-            Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition); // musposition
-            Vector2 mousePosition2D = new Vector2(mouseWorldPos.x, mouseWorldPos.y);
-
-            // raycast till musen
-            RaycastHit2D hit = Physics2D.Raycast(mousePosition2D, Vector2.zero, Mathf.Infinity, Byggnader);
-
-            if (hit.collider != null) // fanns det en byggnad där
-            {
-
-                Vector3 buildingPosition = hit.collider.transform.position; // position (behövs för eventsystem
-                Vector3Int gridPosition = grid.WorldToCell(buildingPosition); // till kordinater
-
-                Destroy(hit.collider.gameObject); // byggnad borta :c
-
-                Debug.Log("byggnad borta :C");
-
-                // Trigger the event to notify nearby lamps
-                ByggnadBorttagenEvent?.Invoke(buildingPosition);
-
-            }
-            else
-            {
-                Debug.Log("tomt");
-            }
+            vasenNappi();
+        } else if (Input.GetMouseButtonDown(1))
+        {
+            gameObject.SetActive(false);
         }
+    }
 
+    private void vasenNappi()
+    {
+        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 mouseWorldPos2d = new Vector2(mouseWorldPos.x, mouseWorldPos.y);
+
+        // leta i rätt lager
+        RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos2d, Vector2.zero, Mathf.Infinity, Byggnader);
+
+        if (hit.collider != null)
+        {
+            TaBortByggnad(hit.collider);
+        }
+        else
+        {
+            Debug.Log("tomt");
+        }
+    }
+
+    private void TaBortByggnad(Collider2D collider)
+    {
+        Vector3 worldPosition = collider.transform.position;
+        Vector3Int gridPosition = ByggPlacerare.Instance.grid.WorldToCell(worldPosition);
+
+
+        // ta bort pls
+        ByggPlacerare.Instance.ordBoksBorttagaren(gridPosition);
+        Debug.Log("tar bort (kanske hoppas): " + gridPosition);
+
+        //tag bort
+        Destroy(collider.gameObject);
+
+        // lampa vill ha den här
+        ByggnadBorttagenEvent?.Invoke(worldPosition);
     }
 
     private bool IntePlaceraVidKnappar() // i eftertanke så är det väldigt bra att titta ifall den är vid en knapp

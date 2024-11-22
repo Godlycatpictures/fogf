@@ -14,9 +14,23 @@ public class ByggPlacerare : MonoBehaviour
     // eventsystem för bättre saker
     public static event Action<Vector3> ByggnadPlaceradEvent; // säger till allt och alla att en byggnad har placerats
 
-    private Dictionary<Vector3Int, GameObject> placeradeByggnader = new Dictionary<Vector3Int, GameObject>(); // plasts
+    private readonly Dictionary<Vector3Int, GameObject> placeradeByggnader = new Dictionary<Vector3Int, GameObject>(); // plats
 
     public SceneInfo sceneInfo; // scene info för kol o sånt
+
+    // låter rakennushajoittaja ta bort från dictionary
+    public static ByggPlacerare Instance { get; private set; }
+
+    private void Start()
+    {
+        BobGone(); // den ska bort i början då man inte vill ha den i början
+
+    }
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     void Update()
     {
@@ -25,44 +39,41 @@ public class ByggPlacerare : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && !IntePlaceraVidKnappar())
         {
-            Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition); // tar musens porition
-            Vector3Int gridPosition = grid.WorldToCell(mouseWorldPos); // tar musens porition 2
-
-            if (!placeradeByggnader.ContainsKey(gridPosition))
-            {
-                placeraByggnaden(gridPosition); // byggna till poritionsnen
-                // Destroy(enKusligByggnad); // brot med det läskiga BEHÖVS INTE HÄR
-            }
-            else
-            {
-                Debug.Log("Ej placerbar här! (redan tagen av annan byggnad) " + placeradeByggnader[gridPosition].name);
-            }
+            testaPlaceraByggnad();
         }
         else if (Input.GetMouseButtonDown(1))
         {
             BobGone();
         }
     }
+
+    private void testaPlaceraByggnad()
+    {
+        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3Int gridPosition = grid.WorldToCell(mouseWorldPos);
+
+        if (!placeradeByggnader.ContainsKey(gridPosition))
+        {
+            placeraByggnaden(gridPosition);
+        }
+        else
+        {
+            Debug.Log("kan ej placeras här, tagen av byggnad (en annan)");
+        }
+    }
     private void visaKusligaByggnaden()
     {
-        if (enKusligByggnad != null)
-        {
-            Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition); // muspositioner x3
-            Vector3Int gridPosition = grid.WorldToCell(mouseWorldPos);
-            Vector3 finalPosition = grid.CellToWorld(gridPosition);
-            finalPosition.z = -9;  // rätt "layer"
+        if (enKusligByggnad == null) return;
 
-            enKusligByggnad.transform.position = finalPosition;
+        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3Int gridPosition = grid.WorldToCell(mouseWorldPos);
+        Vector3 finalPosition = grid.CellToWorld(gridPosition);
+        //finalPosition.z = -9;
 
-            if (placeradeByggnader.ContainsKey(gridPosition))
-            {
-                enKusligByggnad.GetComponent<Renderer>().material.color = Color.red; // röd/ ejplacerbar
-            }
-            else
-            {
-                enKusligByggnad.GetComponent<Renderer>().material.color = Color.green; // grön/ kan placerbar
-            }
-        }
+        enKusligByggnad.transform.position = finalPosition;
+
+        Renderer renderer = enKusligByggnad.GetComponent<Renderer>();
+        renderer.material.color = placeradeByggnader.ContainsKey(gridPosition) ? Color.red : Color.green; // byt mellan grön/röd ifall placerbar eller ej
     }
     public void SetPreviewBuilding(GameObject buildingPrefab)
     {
@@ -73,30 +84,39 @@ public class ByggPlacerare : MonoBehaviour
 
         enKusligByggnad = Instantiate(buildingPrefab, Vector3.zero, Quaternion.identity);
         enKusligByggnad.layer = LayerMask.NameToLayer("ByggnaderPreview");
-        
     }
-
 
     private void placeraByggnaden(Vector3Int gridPosition)
     {
-        Vector3 finalPosition = grid.CellToWorld(gridPosition); // finala positionen plus -8 på z värdet
-        finalPosition.z = -8;
+        Debug.Log("placerad byggnad i " + gridPosition);
 
-        GameObject buildingPrefab = aktivByggnad.getAktivByggnad(); // väljer aktiva byggnaden &
-        GameObject newBuilding = Instantiate(buildingPrefab, finalPosition, Quaternion.identity); // placerar den
-        newBuilding.layer = LayerMask.NameToLayer("Byggnader"); // på den korrekta layern
+        Vector3 finalPosition = grid.CellToWorld(gridPosition);
+        //finalPosition.z = -8;
 
-        // sparar i hashen
+        GameObject buildingPrefab = aktivByggnad.getAktivByggnad();
+        GameObject newBuilding = Instantiate(buildingPrefab, finalPosition, Quaternion.identity);
+        newBuilding.layer = LayerMask.NameToLayer("Byggnader");
+
         placeradeByggnader[gridPosition] = newBuilding;
+        Debug.Log("byggnad sparas i " + gridPosition);
 
-        // sparar vilken byggnad placeras
-        if (newBuilding.TryGetComponent<extractorlogik>(out var extractor))
-            extractor.placerad = true;
-        if (newBuilding.TryGetComponent<lampalogiken>(out var lampa))
-            lampa.placerad = true;
-
-        Debug.Log("Byggnad placerad vid: " + finalPosition);
+        // Notify listeners
         ByggnadPlaceradEvent?.Invoke(finalPosition);
+    }
+
+    public void ordBoksBorttagaren(Vector3Int gridPosition) // kallas från rakennushajoittaja
+    {
+
+        if (placeradeByggnader.TryGetValue(gridPosition, out GameObject byggnad))
+        {
+            Debug.Log("borttagen " + gridPosition);
+            Destroy(byggnad);
+            placeradeByggnader.Remove(gridPosition);
+        }
+        else
+        {
+            Debug.LogWarning($"inget hittades vid {gridPosition}. finns för nuvarande vid: {string.Join(", ", placeradeByggnader.Keys)}");
+        }
     }
 
     public void BobGone()
