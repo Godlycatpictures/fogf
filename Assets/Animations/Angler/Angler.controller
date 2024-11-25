@@ -36,13 +36,13 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: Lurking
+    m_ConditionEvent: lurking
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: AttackPlayer
+    m_ConditionEvent: attackUnit
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: NearLamp
+    m_ConditionEvent: nearLamp
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -5172540797932350267}
@@ -164,7 +164,7 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: XVelocity
     m_Mirror: 0
-  m_BlendParameter: XVelocity
+  m_BlendParameter: xVelocity
   m_BlendParameterY: XVelocity
   m_MinThreshold: -1
   m_MaxThreshold: 1
@@ -202,10 +202,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Lurking
+    m_ConditionEvent: lurking
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: AttackPlayer
+    m_ConditionEvent: attackUnit
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -9051370298759946391}
@@ -230,31 +230,31 @@ AnimatorController:
   m_Name: Angler
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: Lurking
+  - m_Name: lurking
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: NearLamp
+  - m_Name: nearLamp
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: AttackPlayer
+  - m_Name: attackUnit
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: HasAttacked
+  - m_Name: hasAttacked
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: XVelocity
+  - m_Name: xVelocity
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -365,10 +365,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: Lurking
+    m_ConditionEvent: lurking
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: NearLamp
+    m_ConditionEvent: nearLamp
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1900851080628148172}
@@ -393,13 +393,13 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: Lurking
+    m_ConditionEvent: lurking
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: NearLamp
+    m_ConditionEvent: nearLamp
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: AttackPlayer
+    m_ConditionEvent: attackUnit
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1900851080628148172}
