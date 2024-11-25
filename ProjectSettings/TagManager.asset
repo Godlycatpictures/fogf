@@ -9,6 +9,8 @@ TagManager:
   - rmanager
   - generator
   - extractor
+  - enemy
+  - unit
   layers:
   - Default
   - TransparentFX
