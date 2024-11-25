@@ -51,6 +51,7 @@ public class ByggPlacerare : MonoBehaviour
     {
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3Int gridPosition = grid.WorldToCell(mouseWorldPos);
+        gridPosition.z = -8;
 
         if (!placeradeByggnader.ContainsKey(gridPosition))
         {
@@ -68,7 +69,9 @@ public class ByggPlacerare : MonoBehaviour
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3Int gridPosition = grid.WorldToCell(mouseWorldPos);
         Vector3 finalPosition = grid.CellToWorld(gridPosition);
-        //finalPosition.z = -9;
+
+        gridPosition.z = -8; // vet var byggnad placerad är
+        finalPosition.z = -9; // så att den syns över den
 
         enKusligByggnad.transform.position = finalPosition;
 
@@ -88,6 +91,7 @@ public class ByggPlacerare : MonoBehaviour
 
     private void placeraByggnaden(Vector3Int gridPosition)
     {
+        gridPosition.z = -8;
         Debug.Log("placerad byggnad i " + gridPosition);
 
         Vector3 finalPosition = grid.CellToWorld(gridPosition);
@@ -100,13 +104,21 @@ public class ByggPlacerare : MonoBehaviour
         placeradeByggnader[gridPosition] = newBuilding;
         Debug.Log("byggnad sparas i " + gridPosition);
 
+        // för placerad sak i varje byggnad
+        if (newBuilding.TryGetComponent<extractorlogik>(out var extractor))
+            extractor.placerad = true;
+        if (newBuilding.TryGetComponent<lampalogiken>(out var lampa))
+            lampa.placerad = true;
+        if (newBuilding.TryGetComponent<generatorlogiken>(out var generator))
+            generator.placerad = true;
+
         // Notify listeners
         ByggnadPlaceradEvent?.Invoke(finalPosition);
     }
 
     public void ordBoksBorttagaren(Vector3Int gridPosition) // kallas från rakennushajoittaja
     {
-
+        gridPosition.z = -8;
         if (placeradeByggnader.TryGetValue(gridPosition, out GameObject byggnad))
         {
             Debug.Log("borttagen " + gridPosition);

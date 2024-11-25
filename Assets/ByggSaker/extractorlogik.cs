@@ -7,11 +7,12 @@ public class extractorlogik : MonoBehaviour
 {
     public bool exracting = false;
     public float tidsPress = 10f;
-    public int kolkolkolkolkol = 5;
     public bool placerad = false;
     public int antalloops = 0;
 
     public SceneInfo sceneInfo; // scene info för kol o sånt
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +49,7 @@ public class extractorlogik : MonoBehaviour
         if (antalloops < 6)
         {
             antalloops++;
-            sceneInfo.energyResource += kolkolkolkolkol; // kol plus är lika med kol
+            sceneInfo.energyResource += sceneInfo.kolSomTasUpp; // kol plus är lika med kol
             Debug.Log("du har nu " + sceneInfo.energyResource + " st. kol");
         }
         else
