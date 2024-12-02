@@ -106,12 +106,18 @@ public class ByggPlacerare : MonoBehaviour
 
         // för placerad sak i varje byggnad
         if (newBuilding.TryGetComponent<extractorlogik>(out var extractor))
+        {
             extractor.placerad = true;
+        }
         if (newBuilding.TryGetComponent<lampalogiken>(out var lampa))
+        {
             lampa.placerad = true;
+        }
         if (newBuilding.TryGetComponent<generatorlogiken>(out var generator))
+        {
             generator.placerad = true;
-
+        }
+           
         // Notify listeners
         ByggnadPlaceradEvent?.Invoke(finalPosition);
     }

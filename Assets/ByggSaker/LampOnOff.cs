@@ -8,7 +8,7 @@ public class LampOnOff : MonoBehaviour
 
     private void Start()
     {
-        HideLight();
+        ShowLight();
     }
     public void HideLight()
     {
