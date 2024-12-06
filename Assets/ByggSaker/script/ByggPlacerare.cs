@@ -108,14 +108,17 @@ public class ByggPlacerare : MonoBehaviour
         if (newBuilding.TryGetComponent<extractorlogik>(out var extractor))
         {
             extractor.placerad = true;
+            Debug.Log("extractor placerad");
         }
         if (newBuilding.TryGetComponent<lampalogiken>(out var lampa))
         {
             lampa.placerad = true;
+            Debug.Log("lampa placerad");
         }
         if (newBuilding.TryGetComponent<generatorlogiken>(out var generator))
         {
             generator.placerad = true;
+            Debug.Log("generator placerad");
         }
            
         // Notify listeners

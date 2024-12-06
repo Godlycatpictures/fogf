@@ -11,6 +11,8 @@ TagManager:
   - extractor
   - enemy
   - unit
+  - tree
+  - stone
   layers:
   - Default
   - TransparentFX
