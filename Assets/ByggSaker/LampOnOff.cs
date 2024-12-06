@@ -8,7 +8,7 @@ public class LampOnOff : MonoBehaviour
 
     private void Start()
     {
-        ShowLight();
+        ShowLight(); // ska vara hidelight() men har inte fixat kolsaken och orka tbh
     }
     public void HideLight()
     {
