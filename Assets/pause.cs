@@ -1,51 +1,63 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject pauseMenuUI; // Drag your Canvas object here in the Inspector.
+    [SerializeField] private GameObject pauseMenuUI; // Huvudpanelen för pausmenyn
+    [SerializeField] private GameObject spelKnappar; 
+    [SerializeField] private ByggValet byggValet;
+// UI-panel för spelknappar
     private bool isPaused = false;
 
     void Update()
     {
-        // Check for the ESC key to toggle pause
+        // Kontrollera om ESC trycks
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isPaused)
-            {
-                Resume();
-            }
-            else
-            {
-                Pause();
-            }
+            TogglePause();
+        }
+    }
+
+    private void TogglePause()
+    {
+        if (isPaused)
+        {
+            Resume();
+        }
+        else
+        {
+            Pause();
         }
     }
 
     public void Resume()
     {
-        pauseMenuUI.SetActive(false); // Hide the pause menu
-        Time.timeScale = 1f; // Resume game
-        isPaused = false;
+        pauseMenuUI.SetActive(false); // Dölj pausmenyn
+        spelKnappar.SetActive(true); // Visa spelknappar
+        Time.timeScale = 1f; // Återuppta spelets tid
+        isPaused = false; // Uppdatera tillstånd
     }
 
     public void Pause()
+{
+    pauseMenuUI.SetActive(true); // Visa pausmenyn
+    spelKnappar.SetActive(false); // Dölj spelknappar
+    Time.timeScale = 0f; // Pausa spelets tid
+    isPaused = true; // Uppdatera tillstånd
+
+    if (byggValet != null)
     {
-        pauseMenuUI.SetActive(true); // Show the pause menu
-        Time.timeScale = 0f; // Freeze game
-        isPaused = true;
+        byggValet.taBortTagareAvByggnader(); // Anropa metoden
     }
+}
 
     public void QuitGame()
     {
-        Debug.Log("Quitting Game...");
-        Application.Quit(); // Quits the application
-        // If you're in the editor, stop play mode
+        Debug.Log("Avslutar spelet...");
+        Application.Quit();
         #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
         #endif
     }
 }
-
