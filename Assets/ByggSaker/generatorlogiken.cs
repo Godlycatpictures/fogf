@@ -11,13 +11,7 @@ public class generatorlogiken : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (placerad == true)
-        {
-            sceneInfo.kolSomTasUpp += 10;
-        } else
-        {
-            sceneInfo.kolSomTasUpp -= 10;
-        }
+        
 
     }
 
