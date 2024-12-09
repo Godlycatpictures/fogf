@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f8ad23a0d6bef14fb98742d75a056fa, type: 3}
   m_Name: SceneInfo
   m_EditorClassIdentifier: 
-  energyResource: 10
+  energyResource: 0
+  buildingResource: 0
+  kolSomTasUpp: 5
