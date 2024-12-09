@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject pauseMenuUI; // Huvudpanelen för pausmenyn
     [SerializeField] private GameObject spelKnappar; 
     [SerializeField] private ByggValet byggValet;
+     public ByggPlacerare bob;
 // UI-panel för spelknappar
     private bool isPaused = false;
 
@@ -41,6 +42,14 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
 {
+        if (bob != null)
+    {
+        bob.BobGone();
+    }
+    else
+    {
+        Debug.LogWarning("Bob (ByggPlacerare) is not assigned!");
+    }
     pauseMenuUI.SetActive(true); // Visa pausmenyn
     spelKnappar.SetActive(false); // Dölj spelknappar
     Time.timeScale = 0f; // Pausa spelets tid

@@ -628,8 +628,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4e42d6c9fea67b4fbdf6e77bbe47efb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panSpeed: 20
-  panBorderThickness: 10
+  panSpeed: 18
+  panBorderThickness: 20
   panLimit: {x: 450, y: 450}
 --- !u!1 &1164785022
 GameObject:
@@ -25370,7 +25370,7 @@ GameObject:
   - component: {fileID: 1399533279}
   - component: {fileID: 1399533278}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: PausMeny
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25488,7 +25488,7 @@ RectTransform:
   m_GameObject: {fileID: 1417616024}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 1.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2123906969}
@@ -26142,7 +26142,7 @@ RectTransform:
   m_GameObject: {fileID: 1934943184}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 1.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1859883952}
@@ -26279,6 +26279,7 @@ MonoBehaviour:
   pauseMenuUI: {fileID: 1399533276}
   spelKnappar: {fileID: 1911809981}
   byggValet: {fileID: 1911809980}
+  bob: {fileID: 1707675606}
 --- !u!4 &2091661261
 Transform:
   m_ObjectHideFlags: 0
