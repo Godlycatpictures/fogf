@@ -8,4 +8,7 @@ public class SceneInfo : MonoBehaviour
     public int buildingResource = 0; // till att bygga
 
     public int kolSomTasUpp = 5; // kol man får
+
+    public float tid = 1;
+
 }
