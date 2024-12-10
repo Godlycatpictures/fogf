@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1189172829082394812}
   - component: {fileID: 3541215921981204358}
   - component: {fileID: 8710150674200326403}
-  - component: {fileID: -5866851410840943886}
   m_Layer: 0
   m_Name: Angler 1
   m_TagString: enemy
@@ -30,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2046401413986865971}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.81215084, y: -2.842938, z: 0.026922027}
+  m_LocalPosition: {x: -0.81215084, y: -2.842938, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -171,26 +170,3 @@ CircleCollider2D:
   m_Offset: {x: -0.0040510893, y: 0.16706681}
   serializedVersion: 2
   m_Radius: 0.9459491
---- !u!114 &-5866851410840943886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2046401413986865971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 314b02266657a8444a488895a19d8646, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  unit: {fileID: 0}
-  lamp: {fileID: 0}
-  extractor: {fileID: 0}
-  generator: {fileID: 0}
-  animator: {fileID: 0}
-  range: 10
-  attackRange: 2
-  cooldown: 0
-  nearLamp: 0
-  lurking: 0
