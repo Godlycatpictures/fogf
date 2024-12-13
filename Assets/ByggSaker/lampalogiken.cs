@@ -9,7 +9,7 @@ public class lampalogiken : MonoBehaviour
     public bool harLedning = false; // ifall den är nära npnting nära en generator
     public float lampRange = 5f; // med den här radien ish
     public bool placerad = false;
-    public int kolUppslukare;
+    public int kolUppslukare = 5;
     public float UppslukningsTid = 30f;
 
     public SceneInfo sceneInfo; // scene info för kol o sånt

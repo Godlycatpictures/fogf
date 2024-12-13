@@ -232,6 +232,6 @@ MonoBehaviour:
   harLedning: 0
   lampRange: 5
   placerad: 0
-  kolUppslukare: 0
+  kolUppslukare: 5
   UppslukningsTid: 30
   sceneInfo: {fileID: 11400000, guid: 5dff12e62444a1b458df3970508b156b, type: 2}

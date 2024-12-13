@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5441297027144044826}
   - component: {fileID: 7381002361321590817}
-  - component: {fileID: 5278254197158539145}
   m_Layer: 0
   m_Name: bobTheBuilder
   m_TagString: Untagged
@@ -52,17 +51,3 @@ MonoBehaviour:
     m_Bits: 0
   enKusligByggnad: {fileID: 0}
   sceneInfo: {fileID: 11400000, guid: 5dff12e62444a1b458df3970508b156b, type: 2}
---- !u!114 &5278254197158539145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6170749773033811592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0afcaf6e6de00d44fbe5e4e31ca7e755, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grid: {fileID: 0}
-  aktivByggnad: {fileID: 0}
