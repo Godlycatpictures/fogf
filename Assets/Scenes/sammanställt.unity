@@ -26210,7 +26210,7 @@ GameObject:
   - component: {fileID: 2091661261}
   - component: {fileID: 2091661260}
   m_Layer: 0
-  m_Name: pauseMenyBoss
+  m_Name: MenyBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26229,6 +26229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 1399533276}
+  byggKnappMeny: {fileID: 5092464336651183636}
   spelKnappar: {fileID: 5092464336651183636}
   byggValet: {fileID: 7104980740609493104}
   bob: {fileID: 1707675605}
@@ -26520,5 +26521,5 @@ SceneRoots:
   - {fileID: 1164785024}
   - {fileID: 842947976}
   - {fileID: 1399533281}
-  - {fileID: 2091661261}
   - {fileID: 630045311}
+  - {fileID: 2091661261}

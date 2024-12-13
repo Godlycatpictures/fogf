@@ -31,7 +31,7 @@ public class CameraZoom : MonoBehaviour
         // Get the scroll input
         float scrollInput = Input.GetAxis("Mouse ScrollWheel");
 
-Debug.Log($"Mouse Scroll Input: {scrollInput}");
+
 
         // Adjust the orthographic size based on scroll input
         cam.orthographicSize -= scrollInput * zoomSpeed;

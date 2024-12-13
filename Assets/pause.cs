@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject pauseMenuUI; // Huvudpanelen för pausmenyn
+    [SerializeField] private GameObject pauseMenuUI;
+[SerializeField] private GameObject byggKnappMeny; //fixa knapp så man kan trycka och sen få fram bygg menyn för framtid
     [SerializeField] private GameObject spelKnappar; 
     [SerializeField] private ByggValet byggValet;
      public ByggPlacerare bob;
@@ -70,3 +71,4 @@ public class PauseMenu : MonoBehaviour
         #endif
     }
 }
+
