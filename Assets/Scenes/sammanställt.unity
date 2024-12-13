@@ -548,6 +548,7 @@ GameObject:
   - component: {fileID: 842947974}
   - component: {fileID: 842947973}
   - component: {fileID: 842947977}
+  - component: {fileID: 842947978}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -688,6 +689,21 @@ MonoBehaviour:
   panSpeed: 18
   panBorderThickness: 20
   panLimit: {x: 450, y: 450}
+--- !u!114 &842947978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842947972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3d5ac776cc2b7148833448398f834fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoomSpeed: 5
+  minZoom: 2
+  maxZoom: 10
 --- !u!1 &1164785022
 GameObject:
   m_ObjectHideFlags: 0
@@ -26194,7 +26210,7 @@ GameObject:
   - component: {fileID: 2091661261}
   - component: {fileID: 2091661260}
   m_Layer: 0
-  m_Name: pauseMenyBoss
+  m_Name: MenyBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26213,6 +26229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 1399533276}
+  byggKnappMeny: {fileID: 5092464336651183636}
   spelKnappar: {fileID: 5092464336651183636}
   byggValet: {fileID: 7104980740609493104}
   bob: {fileID: 1707675605}
@@ -26504,5 +26521,5 @@ SceneRoots:
   - {fileID: 1164785024}
   - {fileID: 842947976}
   - {fileID: 1399533281}
-  - {fileID: 2091661261}
   - {fileID: 630045311}
+  - {fileID: 2091661261}
