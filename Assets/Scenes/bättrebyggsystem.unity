@@ -122,12 +122,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!156049354 &468413562 stripped
-Grid:
-  m_CorrespondingSourceObject: {fileID: 2759941234602485204, guid: 93501c92c158100499d49e001837264e, type: 3}
-  m_PrefabInstance: {fileID: 2500341635111997562}
-  m_PrefabAsset: {fileID: 0}
---- !u!213 &540996214
+--- !u!213 &70467220
 Sprite:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -337,6 +332,11 @@ Sprite:
   m_PhysicsShape: []
   m_Bones: []
   m_SpriteID: 
+--- !u!156049354 &468413562 stripped
+Grid:
+  m_CorrespondingSourceObject: {fileID: 2759941234602485204, guid: 93501c92c158100499d49e001837264e, type: 3}
+  m_PrefabInstance: {fileID: 2500341635111997562}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &885260721
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -522,40 +522,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1216143154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 540996214}
-  m_Color: {r: 0.9775797, g: 0.43596208, b: 0.44373554, a: 1}
-  m_Transform:
-    e00: 1
-    e01: 0
-    e02: 0
-    e03: 0
-    e10: 0
-    e11: 1
-    e12: 0
-    e13: 0
-    e20: 0
-    e21: 0
-    e22: 1
-    e23: 0
-    e30: 0
-    e31: 0
-    e32: 0
-    e33: 1
-  m_InstancedGameObject: {fileID: 0}
-  m_Flags: 3
-  m_ColliderType: 1
 --- !u!1 &1313030886 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6170749773033811592, guid: 891609f7c8e15e646ad99822ab9fed25, type: 3}
@@ -714,6 +680,40 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4600034556889865653, guid: abd6b4143485e6d468c865f11bbc8a16, type: 3}
   m_PrefabInstance: {fileID: 2989465830549699151}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1818611028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 70467220}
+  m_Color: {r: 0.80058014, g: 0.44254872, b: 0.49779782, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 3
+  m_ColliderType: 1
 --- !u!114 &824674220404442525 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7104980738763042763, guid: fb95d1f176c8cc6498cb133163191400, type: 3}
@@ -1731,6 +1731,10 @@ PrefabInstance:
     - target: {fileID: 7961197629509209194, guid: 322f90ec24a338d47b9cdbc3feda1786, type: 3}
       propertyPath: m_Name
       value: energypoint (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7961197629509209194, guid: 322f90ec24a338d47b9cdbc3feda1786, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

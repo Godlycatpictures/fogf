@@ -60,52 +60,82 @@ public class lampalogiken : MonoBehaviour
 
     private void tittaLedning()
     {
-        bool kopplingFinns = false; // temp (så att update inte nollställs)
+        bool kopplingFinns = false; // temp för att inte nolställa update
 
+        // Kolla om en generator eller extractor finns i närheten
         Collider2D[] nearbyObjects = Physics2D.OverlapCircleAll(transform.position, lampRange);
-
         foreach (var obj in nearbyObjects)
         {
             if (obj.CompareTag("generator") || obj.CompareTag("extractor"))
             {
-                kopplingFinns = true;
-                Debug.Log("Finns en generator/extractor för ledning!");
+                kopplingFinns = true; 
                 break;
             }
         }
 
-        // lampor
+        // ingen extractorgenerator betyder leta lampor
         if (!kopplingFinns)
         {
-            tittaLedningLampa();
+            HashSet<lampalogiken> visitedLamps = new HashSet<lampalogiken>();
+            kopplingFinns = KontrolleraLedningViaLampor(this, visitedLamps);
         }
-        else // om kopplingFinns = true
+
+        if (kopplingFinns)
         {
-            harLedning = kopplingFinns;
+            harLedning = true;
+        }
+        else
+        {
+            harLedning = false;
         }
     }
 
-
-    private void tittaLedningLampa()
+    private bool KontrolleraLedningViaLampor(lampalogiken startLampa, HashSet<lampalogiken> besöktaLampor)
     {
-        bool kopplingFinns = false; 
+        // om jag har ledning, behöver jag inte checka fö ledning
+        if (startLampa.harLedning)
+        {
+            return true;
+        }
 
-        Collider2D[] nearbyLamps = Physics2D.OverlapCircleAll(transform.position, lampRange);
+        // redan chackad check
+        besöktaLampor.Add(startLampa);
 
+        // cirkel
+        Collider2D[] nearbyLamps = Physics2D.OverlapCircleAll(startLampa.transform.position, lampRange);
         foreach (var obj in nearbyLamps)
         {
             lampalogiken nearbyLamp = obj.GetComponent<lampalogiken>();
-            if (nearbyLamp != null && nearbyLamp.harLedning)
+
+            if (nearbyLamp != null && !besöktaLampor.Contains(nearbyLamp))
             {
-                kopplingFinns = true;
-                Debug.Log("Lampan fick koppling via en annan lampa!");
-                break;
+                if (nearbyLamp.harLedning)
+                {
+                    // om en lampa har koppling har jag koppling :D
+                    return true;
+                }
+                else
+                {
+                    // titta efter andra lampor
+                    if (KontrolleraLedningViaLampor(nearbyLamp, besöktaLampor))
+                    {
+                        return true;
+                    }
+                }
             }
         }
 
-        harLedning = kopplingFinns;
+        return false; 
     }
 
+    public static void UppdateraAllaLampor()
+    {
+        lampalogiken[] allaLampor = FindObjectsOfType<lampalogiken>();
+        foreach (var lampa in allaLampor)
+        {
+            lampa.tittaLedning(); // Uppdatera varje lampas koppling
+        }
+    }
 
     private void OnDrawGizmosSelected()
     {

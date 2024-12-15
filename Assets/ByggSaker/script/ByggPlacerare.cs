@@ -123,6 +123,7 @@ public class ByggPlacerare : MonoBehaviour
            
         // Notify listeners
         ByggnadPlaceradEvent?.Invoke(finalPosition);
+        lampalogiken.UppdateraAllaLampor();
     }
 
     public void ordBoksBorttagaren(Vector3Int gridPosition) // kallas från rakennushajoittaja
