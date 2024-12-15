@@ -60,51 +60,52 @@ public class lampalogiken : MonoBehaviour
 
     private void tittaLedning()
     {
+        bool kopplingFinns = false; // temp (så att update inte nollställs)
+
         Collider2D[] nearbyObjects = Physics2D.OverlapCircleAll(transform.position, lampRange);
 
         foreach (var obj in nearbyObjects)
         {
             if (obj.CompareTag("generator") || obj.CompareTag("extractor"))
             {
-                harLedning = true;
-                Debug.Log("finns en generator/extractor för ledning!");
-                break;
-            }
-            else
-            {
-                harLedning = false;
-                Debug.Log("ingen ledning från generator/extractor");
+                kopplingFinns = true;
+                Debug.Log("Finns en generator/extractor för ledning!");
                 break;
             }
         }
 
-        //  om ej en generator eller extractor, lampa?
-        if (!harLedning)
+        // lampor
+        if (!kopplingFinns)
         {
             tittaLedningLampa();
         }
+        else // om kopplingFinns = true
+        {
+            harLedning = kopplingFinns;
+        }
     }
+
 
     private void tittaLedningLampa()
     {
-        Collider2D[] nearbyLamps = Physics2D.OverlapCircleAll(transform.position, lampRange); // tittar innanför innanför range
+        bool kopplingFinns = false; 
+
+        Collider2D[] nearbyLamps = Physics2D.OverlapCircleAll(transform.position, lampRange);
 
         foreach (var obj in nearbyLamps)
         {
             lampalogiken nearbyLamp = obj.GetComponent<lampalogiken>();
             if (nearbyLamp != null && nearbyLamp.harLedning)
             {
-                harLedning = true;
+                kopplingFinns = true;
                 Debug.Log("Lampan fick koppling via en annan lampa!");
-                break; 
-            } else
-            {
-                harLedning = false;
-                Debug.Log("ingen ledning från lampa");
                 break;
             }
         }
+
+        harLedning = kopplingFinns;
     }
+
 
     private void OnDrawGizmosSelected()
     {
