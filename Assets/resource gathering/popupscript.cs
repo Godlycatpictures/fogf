@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class popupscript : MonoBehaviour
 {
     // cred till https://discussions.unity.com/t/open-a-popup-window-with-text-and-images-when-clicking-on-an-object-please-help/184303
-    // bara för originella koden är ganska modifierad
+    // bara fï¿½r originella koden ï¿½r ganska modifierad
     public GameObject ui;
 
     // Use this for initialization
@@ -26,28 +26,28 @@ public class popupscript : MonoBehaviour
         
         if (!string.IsNullOrEmpty(message))
         {
-            Text textObject = ui.gameObject.GetComponentInChildren<Text>(); // hade problem med textmeshpro (ändrades till text legacy och fungerar nu)
+            Text textObject = ui.gameObject.GetComponentInChildren<Text>(); // hade problem med textmeshpro (ï¿½ndrades till text legacy och fungerar nu)
             textObject.text = message;
         }
 
         bool isActive = ui.activeSelf;
         ui.SetActive(!isActive);
 
-        if (ui.activeSelf)
+      /*  if (ui.activeSelf)
         {
             Time.timeScale = 0f; // freeze
         }
         else
         {
             Time.timeScale = 1f; // unfreeze
-        }
+        }*/
     }
     public void OpenBuilding(string message)
     {
 
         if (!string.IsNullOrEmpty(message))
         {
-            Text textObject = ui.gameObject.GetComponentInChildren<Text>(); // hade problem med textmeshpro (ändrades till text legacy och fungerar nu)
+            Text textObject = ui.gameObject.GetComponentInChildren<Text>(); // hade problem med textmeshpro (ï¿½ndrades till text legacy och fungerar nu)
             textObject.text = message;
         }
 

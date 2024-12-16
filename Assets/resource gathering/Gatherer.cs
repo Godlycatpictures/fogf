@@ -4,7 +4,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class Gatherer : MonoBehaviour // har blivit interakt men startades som gatherer så därav behöll det gamla namnet
+public class Gatherer : MonoBehaviour // har blivit interakt men startades som gatherer sï¿½ dï¿½rav behï¿½ll det gamla namnet
 {
     public popupscript popupscript;
     public GameObject UI;
@@ -14,7 +14,7 @@ public class Gatherer : MonoBehaviour // har blivit interakt men startades som g
 
     private GameObject selectedObject;
 
-    public SceneInfo sceneInfo; // scene info för kol o sånt
+    public SceneInfo sceneInfo; // scene info fï¿½r kol o sï¿½nt
 
     // Use this for initialization
     void Start()
@@ -25,7 +25,7 @@ public class Gatherer : MonoBehaviour // har blivit interakt men startades som g
     // Update is called once per frame
     void Update()
     {
-        if (!UI.activeSelf) // kan ej använda ifall UI är aktivt
+        if (!UI.activeSelf) // kan ej anvï¿½nda ifall UI ï¿½r aktivt
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -50,17 +50,17 @@ public class Gatherer : MonoBehaviour // har blivit interakt men startades som g
 
         if (hit.collider != null)
         {
-            Debug.Log("Träffade objekt: " + hit.collider.name + ", Tag: " + hit.collider.tag);
+            Debug.Log("Trï¿½ffade objekt: " + hit.collider.name + ", Tag: " + hit.collider.tag);
 
             if (Resources.Contains(hit.collider.tag))
             {
                 popupscript.OpenInteractable("gather " + hit.collider.tag);
                 selectedObject = hit.collider.gameObject; // Skicka objektet
-            }
+            }/*
             else if (Buildings.Contains(hit.collider.tag))
             {
-                popupscript.OpenBuilding("byggnad"); // öppna menun för byggnader
-            }
+                popupscript.OpenBuilding("byggnad"); // ï¿½ppna menun fï¿½r byggnader
+            }*/
         }
     }
 
