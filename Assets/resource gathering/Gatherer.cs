@@ -71,12 +71,14 @@ public class Gatherer : MonoBehaviour // har blivit interakt men startades som g
             if (selectedObject.tag.Equals("coal"))
             {
                 Debug.Log("(energy resource) + 1");
+                sceneInfo.energyResource += 10;
                 Destroy(selectedObject);
                 UI.SetActive(false);
             } 
             else if ((selectedObject.tag.Equals("tree") || selectedObject.tag.Equals("stone")))
             {
                 Debug.Log("(building resource) + 1");
+                sceneInfo.buildingResource += 10;
                 Destroy(selectedObject);
                 UI.SetActive(false);
             }

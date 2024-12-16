@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupscript: {fileID: 2986918397241381302}
   UI: {fileID: 0}
+  sceneInfo: {fileID: 11400000, guid: 5dff12e62444a1b458df3970508b156b, type: 2}
 --- !u!114 &2986918397241381302
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 154140800}
   - component: {fileID: 154140799}
   - component: {fileID: 154140798}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: coal (3)
   m_TagString: coal
   m_Icon: {fileID: 0}
@@ -427,7 +427,7 @@ GameObject:
   - component: {fileID: 438045177}
   - component: {fileID: 438045176}
   - component: {fileID: 438045178}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: tree
   m_TagString: tree
   m_Icon: {fileID: 0}
@@ -547,7 +547,7 @@ GameObject:
   - component: {fileID: 1251740815}
   - component: {fileID: 1251740814}
   - component: {fileID: 1251740816}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: stone
   m_TagString: stone
   m_Icon: {fileID: 0}
@@ -797,7 +797,7 @@ GameObject:
   - component: {fileID: 1458091506}
   - component: {fileID: 1458091505}
   - component: {fileID: 1458091504}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: coal (2)
   m_TagString: coal
   m_Icon: {fileID: 0}
@@ -995,7 +995,7 @@ GameObject:
   - component: {fileID: 2145143200}
   - component: {fileID: 2145143199}
   - component: {fileID: 2145143198}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: coal (1)
   m_TagString: coal
   m_Icon: {fileID: 0}
