@@ -59,6 +59,8 @@ public class MonsterAI : MonoBehaviour
 
     private void Roam()
     {
+
+
         if (roamTimer > 0)
         {
             roamTimer -= Time.deltaTime;
@@ -92,6 +94,7 @@ public class MonsterAI : MonoBehaviour
             isRoaming = false;
             lurking = true;
             rb.velocity = Vector2.zero;
+            isMoving = false;
         }
     }
 
