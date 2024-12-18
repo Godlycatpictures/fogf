@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterAI : MonoBehaviour
+public class AnglerAI : MonoBehaviour
 {
     public float roamingSpeed = 2f;
     public float roamTime = 2f;
@@ -90,7 +90,6 @@ public class MonsterAI : MonoBehaviour
 
         if (nearLamp)
         {
-            Debug.Log("Lamp detected. Transitioning to lurking.");
             isRoaming = false;
             lurking = true;
             rb.velocity = Vector2.zero;
@@ -103,7 +102,6 @@ public class MonsterAI : MonoBehaviour
         // Check if the lamp still exists
         if (targetLamp == null || Vector2.Distance(transform.position, targetLamp.position) > detectionRange)
         {
-            Debug.Log("Lamp lost. Returning to roaming.");
             lurking = false;
             isRoaming = true;
             return;
@@ -115,7 +113,6 @@ public class MonsterAI : MonoBehaviour
 
         if (attackUnit)
         {
-            Debug.Log("Unit detected in attack range. Attacking.");
             lurking = false;
             StartCoroutine(AttackAndRunAway());
         }
@@ -125,7 +122,6 @@ public class MonsterAI : MonoBehaviour
     {
         // Attack
         hasAttacked = true;
-        Debug.Log("Attacking unit.");
 
         // Simulate attack with a brief delay
         yield return new WaitForSeconds(0.5f);
@@ -135,7 +131,6 @@ public class MonsterAI : MonoBehaviour
         {
             Vector2 runDirection = (transform.position - targetUnit.position).normalized;
             rb.velocity = runDirection * runAwaySpeed;
-            Debug.Log("Running away from unit.");
             yield return new WaitForSeconds(1f); // Run for 1 second
         }
 
@@ -145,12 +140,10 @@ public class MonsterAI : MonoBehaviour
         // Check if the lamp is still nearby
         if (targetLamp == null || Vector2.Distance(transform.position, targetLamp.position) > detectionRange)
         {
-            Debug.Log("Lamp lost. Returning to roaming.");
             isRoaming = true;
         }
         else
         {
-            Debug.Log("Returning to lurking.");
             lurking = true;
         }
     }
@@ -158,7 +151,6 @@ public class MonsterAI : MonoBehaviour
     private IEnumerator CooldownAndReturnToRoaming()
     {
         yield return new WaitForSeconds(cooldownTime);
-        Debug.Log("Cooldown complete. Returning to roaming.");
         hasAttacked = false;
         isRoaming = true;
     }
