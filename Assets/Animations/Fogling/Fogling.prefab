@@ -121,14 +121,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b07af7b153cad624bb769bb59f03299a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderSpeed: 2
-  chaseSpeed: 3.5
+  detectionRange: 8
+  attackCooldown: 5
+  windupTime: 1
+  wanderSpeed: 1
+  chaseSpeed: 3
   wanderTime: 2
-  stopBeforeAttackTime: 1
-  detectionRange: 5
-  attackCooldown: 3
   Attacking: 0
   WithinRange: 0
+  IsMoving: 0
   XVelocity: 0
 --- !u!50 &2921457529238814158
 Rigidbody2D:

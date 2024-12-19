@@ -183,3 +183,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 757aa48188d95db40a2c26d8b8435d54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roamingSpeed: 2
+  roamTime: 2
+  roamPauseTime: 1
+  detectionRange: 8
+  attackRange: 1.5
+  runAwaySpeed: 3
+  cooldownTime: 3
+  isRoaming: 1
+  lurking: 0
+  nearLamp: 0
+  attackUnit: 0
+  hasAttacked: 0
+  isMoving: 0
