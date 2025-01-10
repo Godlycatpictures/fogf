@@ -5,6 +5,7 @@ using UnityEngine;
 public class FoglingAI : MonoBehaviour
 {
     public float detectionRange = 10f;      // Range to detect objects with the tag "lampa" or "unit"
+    public float attackRange = 1f;
     public float attackCooldown = 3f;      // Cooldown between attacks
     public float windupTime = 1f;          // Delay before launching the attack
 
@@ -14,7 +15,8 @@ public class FoglingAI : MonoBehaviour
 
     private Animator animator;
     public bool Attacking = false;
-    public bool WithinRange = false;
+    public bool WithinRange = false;        // True if target is within detectionRange
+    public bool WithinAttackRange = false; // True if target is within attackRange
     public bool IsMoving = false;
     public float XVelocity = 0f;
 
@@ -52,14 +54,19 @@ public class FoglingAI : MonoBehaviour
         {
             float distanceToTarget = Vector2.Distance(transform.position, target.position);
             WithinRange = distanceToTarget <= detectionRange;
-            animator.SetBool("WithinRange", WithinRange);
+            WithinAttackRange = distanceToTarget <= attackRange;
+
+            animator.SetBool("WithinRange", WithinAttackRange);
 
             if (WithinRange)
             {
-                MoveTowardsTarget();
-                if (distanceToTarget <= 1f && attackTimer <= 0)
+                if (WithinAttackRange && attackTimer <= 0)
                 {
-                    StartCoroutine(PrepareAttack());
+                    StartCoroutine(PerformAttackSequence());
+                }
+                else if (!WithinAttackRange) // Chase if within detectionRange but outside attackRange
+                {
+                    MoveTowardsTarget();
                 }
             }
         }
@@ -67,6 +74,7 @@ public class FoglingAI : MonoBehaviour
         {
             // Wander if no targets are found
             animator.SetBool("WithinRange", false);
+            WithinAttackRange = false;
             Wander();
         }
 
@@ -132,10 +140,9 @@ public class FoglingAI : MonoBehaviour
         rb.velocity = direction * chaseSpeed;
     }
 
-    IEnumerator PrepareAttack()
+    IEnumerator PerformAttackSequence()
     {
-        
-        // Lock all movement during attack
+        // Lock all movement during attack preparation
         rb.velocity = Vector2.zero;
         Attacking = true; // Set attacking flag
         animator.SetBool("Attacking", true);
@@ -144,9 +151,11 @@ public class FoglingAI : MonoBehaviour
         // Wait during the windup period
         yield return new WaitForSeconds(windupTime);
 
+        // Perform the attack (commit to it regardless of target's position)
         PerformAttack();
 
-        // Reset attack state
+        // After attack, reset states
+        attackTimer = attackCooldown;
         Attacking = false;
         animator.SetBool("Attacking", false);
         animator.SetBool("IsMoving", false); // Ensure "IsMoving" is false after attack
@@ -154,8 +163,11 @@ public class FoglingAI : MonoBehaviour
 
     void PerformAttack()
     {
-        // Attack logic here (e.g., damage the target if applicable)
-        attackTimer = attackCooldown; // Reset attack cooldown
+        // Add actual attack logic here (e.g., damage the target if applicable)
+        if (target != null && WithinAttackRange)
+        {
+            Debug.Log("Attack performed on target: " + target.name);
+        }
     }
 
     void UpdateAnimationParameters()
@@ -167,14 +179,15 @@ public class FoglingAI : MonoBehaviour
         IsMoving = rb.velocity.magnitude > 0.1f; // Enemy is moving if the velocity magnitude is greater than 0.1
         animator.SetBool("IsMoving", IsMoving);
         animator.SetFloat("XVelocity", XVelocity);
-
-        // Debug to confirm movement and velocity state
     }
 
     private void OnDrawGizmosSelected()
     {
         // Visualize detection range in the editor
         Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+
+        Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, detectionRange);
     }
 }

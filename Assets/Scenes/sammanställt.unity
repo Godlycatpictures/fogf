@@ -330,6 +330,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6575241119945426750, guid: 870d81aa204c9a34e8965d9374742a1e, type: 3}
+      propertyPath: attackRange
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 246623787749298357, guid: 870d81aa204c9a34e8965d9374742a1e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.939718
