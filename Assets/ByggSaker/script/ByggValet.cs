@@ -24,7 +24,7 @@ public class ByggValet : MonoBehaviour
 
             aktivByggnad = prefabBuildings[index]; // id av byggnaden (i en array)
             Debug.Log("Aktiva byggnaden: " + aktivByggnad.name);
-            Bobby.SetActive(true); // g�r byggare bob tillg�nglig
+            Bobby.SetActive(true); // gör byggare bob tillgänglig
             Borttagare.SetActive(false);
 
             if (byggPlacerare != null)
@@ -36,8 +36,8 @@ public class ByggValet : MonoBehaviour
 
     public void taBortTagareAvByggnader()
     {
-        
-        Bobby.SetActive(false);
+
+        byggPlacerare.BobGone();
         Borttagare.SetActive(true);
 
     }
