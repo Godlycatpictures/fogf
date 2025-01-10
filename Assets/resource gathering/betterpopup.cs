@@ -20,10 +20,10 @@ public class betterpopup : MonoBehaviour
 
     public void ShowPopup(Vector2 mousePosition, string text, string button1Label, string button2Label)
     {
-        popupRect.position = mousePosition;
-        popupText.text = text;
-        button1Text.text = button1Label;
-        button2Text.text = button2Label;
+        popupRect.position = mousePosition; // fixar popupens position
+        popupText.text = text; // text (gather tag)
+        button1Text.text = button1Label; // knapptext
+        button2Text.text = button2Label; // knapptext 2
 
         gameObject.SetActive(true); // Aktivera popupen
     }

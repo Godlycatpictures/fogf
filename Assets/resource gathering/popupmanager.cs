@@ -49,7 +49,7 @@ public class PopupManager : MonoBehaviour
         }
     }
 
-    public void GatherResource()
+    public void GatherResource() // ändrar värden beroende på tag
     {
         if (selectedObject != null && Resources.Contains(selectedObject.tag))
         {
