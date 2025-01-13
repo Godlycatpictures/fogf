@@ -10,7 +10,7 @@ public class lampalogiken : MonoBehaviour
     public float lampRange = 5f; // med den här radien ish
     public bool placerad = false;
     public int kolUppslukare = 5;
-    public float UppslukningsTid = 30f;
+    public float UppslukningsTid = 60f;
 
     public SceneInfo sceneInfo; // scene info för kol o sånt
 
@@ -42,7 +42,7 @@ public class lampalogiken : MonoBehaviour
             {
                 /// tar bort x kol beroende på kolUppslukaren (som generatorn kan göre mer effektiv)
                 /// tänker att den skulle kunna antingen ändra på tiden eller andel kol den tar varje uppslukningstid
-                UppslukningsTid = 30;
+                UppslukningsTid = 60;
                 sceneInfo.energyResource -= kolUppslukare;
                 Debug.Log(kolUppslukare + " kol användts");
 
