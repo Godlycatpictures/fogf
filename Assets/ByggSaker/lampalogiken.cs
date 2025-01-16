@@ -35,7 +35,8 @@ public class lampalogiken : MonoBehaviour
     {
         if (harLedning && placerad)
         {
-            // här skicka såken så att lampan är på till relaterad skript
+            // här skicka saken så att lampan är på till relaterad skript
+
 
             UppslukningsTid -= Time.deltaTime;
             if (UppslukningsTid <= 0)
