@@ -17,6 +17,7 @@ public class generatorlogiken : MonoBehaviour
             {
                 sceneInfo.kolSomTasUpp += 5;
             }return;
+            
         }
     }
 }
