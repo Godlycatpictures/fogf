@@ -11,13 +11,12 @@ public class generatorlogiken : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // +5 per generator placerad
         if (placerad)
         {
-            for (int i = 1; i < 2; i++)
-            {
-                sceneInfo.kolSomTasUpp += 5;
-            }return;
-            
+            sceneInfo.kolSomTasUpp += 5; 
         }
     }
+
+
 }

@@ -11,6 +11,7 @@ public class PopupManager : MonoBehaviour
 
     // för resource
     List<string> Resources = new List<string> { "stone", "coal", "tree" };
+    List<string> Buildings = new List<string> { "generator", "extractor", "lampa"};
     private GameObject selectedObject;
 
     void Start()
@@ -45,9 +46,16 @@ public class PopupManager : MonoBehaviour
                 string popupText = $"Gather {hit.collider.tag}";
                 popupController.ShowPopup(mousePosition, popupText, "Gather", "Cancel");
                 selectedObject = hit.collider.gameObject; // Skicka objektet
+            } else if (Buildings.Contains(hit.collider.tag))
+            {
+                Vector2 mousescreenposition = Input.mousePosition;
+                string popupText = $"Destroy {hit.collider.tag}";
+                popupController.ShowPopup(mousePosition, popupText, "Confirm", "Cancel");
+                selectedObject = hit.collider.gameObject; // Skicka objektet
             }
         }
     }
+
 
     public void GatherResource() // ändrar värden beroende på tag
     {

@@ -13,7 +13,7 @@ public class rakennusHajoittaja : MonoBehaviour
     public LayerMask Byggnader; // layer
 
     public static event Action<Vector3> ByggnadBorttagenEvent; // säger till allt och alla att en byggnad har borttagits
-
+    public SceneInfo sceneInfo; // scene info för kol o sånt
 
     private void Start()
     {

@@ -8,22 +8,22 @@ public class ByggPlacerare : MonoBehaviour
 {
     public Grid grid; // grid
     public ByggValet aktivByggnad; // vilken byggnad via byggvalet.cs
-    public LayerMask Byggnader; // r�tt layer
-    public GameObject enKusligByggnad; // orka med tv� skripts previews �r h�r fr�n och med nu
+    public LayerMask Byggnader; // rätt layer
+    public GameObject enKusligByggnad; // orka med två skripts previews är här från och med nu
 
-    // eventsystem f�r b�ttre saker
-    public static event Action<Vector3> ByggnadPlaceradEvent; // s�ger till allt och alla att en byggnad har placerats
+    // eventsystem för bättre saker
+    public static event Action<Vector3> ByggnadPlaceradEvent; // säger till allt och alla att en byggnad har placerats
 
     private readonly Dictionary<Vector3Int, GameObject> placeradeByggnader = new Dictionary<Vector3Int, GameObject>(); // plats
 
-    public SceneInfo sceneInfo; // scene info f�r kol o s�nt
+    public SceneInfo sceneInfo; // scene info för kol o sånt
 
-    // l�ter rakennushajoittaja ta bort fr�n dictionary
+    // låter rakennushajoittaja ta bort från dictionary
     public static ByggPlacerare Instance { get; private set; }
 
     private void Start()
     {
-        BobGone(); // den ska bort i b�rjan d� man inte vill ha den i b�rjan
+        BobGone(); // den ska bort i början då man inte vill ha den i början
 
     }
 
@@ -59,7 +59,7 @@ public class ByggPlacerare : MonoBehaviour
         }
         else
         {
-            Debug.Log("kan ej placeras h�r, tagen av byggnad (en annan)");
+            Debug.Log("kan ej placeras här, tagen av byggnad (en annan)");
         }
     }
     private void visaKusligaByggnaden()
@@ -70,13 +70,13 @@ public class ByggPlacerare : MonoBehaviour
         Vector3Int gridPosition = grid.WorldToCell(mouseWorldPos);
         Vector3 finalPosition = grid.CellToWorld(gridPosition);
 
-        gridPosition.z = -8; // vet var byggnad placerad �r
-        finalPosition.z = -9; // s� att den syns �ver den
+        gridPosition.z = -8; // vet var byggnad placerad är
+        finalPosition.z = -9; // så att den syns över den
 
         enKusligByggnad.transform.position = finalPosition;
 
         Renderer renderer = enKusligByggnad.GetComponent<Renderer>();
-        renderer.material.color = placeradeByggnader.ContainsKey(gridPosition) ? Color.red : Color.green; // byt mellan gr�n/r�d ifall placerbar eller ej
+        renderer.material.color = placeradeByggnader.ContainsKey(gridPosition) ? Color.red : Color.green; // byt mellan grön/röd ifall placerbar eller ej
     }
     public void SetPreviewBuilding(GameObject buildingPrefab)
     {
@@ -104,53 +104,21 @@ public class ByggPlacerare : MonoBehaviour
         placeradeByggnader[gridPosition] = newBuilding;
         Debug.Log("byggnad sparas i " + gridPosition);
 
-      
+        // för placerad sak i varje byggnad
         if (newBuilding.TryGetComponent<extractorlogik>(out var extractor))
         {
-            if(sceneInfo.buildingResource < 30)
-            {
-                Debug.Log("Du har inte tillräckligt med resurser för att bygga en extractor");
-                Destroy(newBuilding);
-                return;
-            }
-            else
-            {
-                sceneInfo.buildingResource -= 30;
-                 extractor.placerad = true;
+            extractor.placerad = true;
             Debug.Log("extractor placerad");
         }
-            }
-           
         if (newBuilding.TryGetComponent<lampalogiken>(out var lampa))
         {
-            if(sceneInfo.buildingResource < 10)
-            {
-                Debug.Log("Du har inte tillr�ckligt med resurser f�r att bygga en lampa");
-                Destroy(newBuilding);
-                return;
-            }
-            else{
             lampa.placerad = true;
             Debug.Log("lampa placerad");
-            sceneInfo.buildingResource -= 10;
-            }
         }
         if (newBuilding.TryGetComponent<generatorlogiken>(out var generator))
         {
-            if((sceneInfo.buildingResource < 20) && (sceneInfo.energyResource < 50))
-            {
-                Debug.Log("Du har inte tillr�ckligt med resurser f�r att bygga en generator");
-                Destroy(newBuilding);
-                return;
-            }
-            else
-            {
-                sceneInfo.buildingResource -= 20;
-                sceneInfo.energyResource -= 50;
-                 generator.placerad = true;
+            generator.placerad = true;
             Debug.Log("generator placerad");
-            }
-            
         }
            
         // Notify listeners
@@ -158,7 +126,7 @@ public class ByggPlacerare : MonoBehaviour
         lampalogiken.UppdateraAllaLampor();
     }
 
-    public void ordBoksBorttagaren(Vector3Int gridPosition) // kallas fr�n rakennushajoittaja
+    public void ordBoksBorttagaren(Vector3Int gridPosition) // kallas från rakennushajoittaja
     {
         gridPosition.z = -8;
         if (placeradeByggnader.TryGetValue(gridPosition, out GameObject byggnad))
@@ -169,14 +137,14 @@ public class ByggPlacerare : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"inget hittades vid {gridPosition}. finns f�r nuvarande vid: {string.Join(", ", placeradeByggnader.Keys)}");
+            Debug.LogWarning($"inget hittades vid {gridPosition}. finns för nuvarande vid: {string.Join(", ", placeradeByggnader.Keys)}");
         }
     }
 
     public void BobGone()
     {
-        gameObject.SetActive(false); // hejd� byggare bob
-        Destroy(enKusligByggnad); // brot med det l�skiga
+        gameObject.SetActive(false); // hejdå byggare bob
+        Destroy(enKusligByggnad); // brot med det läskiga
     }
 
     private bool IntePlaceraVidKnappar()
