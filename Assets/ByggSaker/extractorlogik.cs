@@ -10,7 +10,7 @@ public class extractorlogik : MonoBehaviour
     public bool placerad = false;
     public int antalloops = 0;
 
-    public SceneInfo sceneInfo; // scene info för kol o sånt
+    public SceneInfo sceneInfo; // scene info fï¿½r kol o sï¿½nt
 
     
 
@@ -46,10 +46,10 @@ public class extractorlogik : MonoBehaviour
 
     private void extractorReactor()
     {
-        if (antalloops < 6)
+        if (antalloops > -1)
         {
             antalloops++;
-            sceneInfo.energyResource += sceneInfo.kolSomTasUpp; // kol plus är lika med kol
+            sceneInfo.energyResource += sceneInfo.kolSomTasUpp; // kol plus ï¿½r lika med kol
             Debug.Log("du har nu " + sceneInfo.energyResource + " st. kol");
         }
         else
