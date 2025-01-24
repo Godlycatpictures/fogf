@@ -105,9 +105,6 @@ public class PopupManager : MonoBehaviour
         {
             Debug.Log("No valid resource selected.");
         }
-        {
-            Debug.Log("No valid resource selected.");
-        }
     }
 
     public void CancelResource() // var i början enbart för resurser därav namnet cancelRESOURCE ;)
