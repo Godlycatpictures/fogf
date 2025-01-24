@@ -95,6 +95,7 @@ public class PopupManager : MonoBehaviour
             else if (selectedObject.tag.Equals("generator"))
             {
                 sceneInfo.buildingResource += 15;
+                sceneInfo.kolSomTasUpp -= 5;
 
                 Destroy(selectedObject);
                 popupController.HidePopup();
