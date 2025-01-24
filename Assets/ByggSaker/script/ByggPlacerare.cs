@@ -71,7 +71,7 @@ public class ByggPlacerare : MonoBehaviour
         Vector3 finalPosition = grid.CellToWorld(gridPosition);
 
         gridPosition.z = -8; // vet var byggnad placerad är
-        finalPosition.z = -9; // så att den syns över den
+        finalPosition.z = -9; // så att den syns över den (previewn)
 
         enKusligByggnad.transform.position = finalPosition;
 
@@ -108,19 +108,53 @@ public class ByggPlacerare : MonoBehaviour
         if (newBuilding.TryGetComponent<extractorlogik>(out var extractor))
         {
             extractor.placerad = true;
-            Debug.Log("extractor placerad");
+            if (sceneInfo.buildingResource < 30)
+            {
+                Debug.Log("Du har inte tillräckligt med resurser för att bygga en extractor");
+                Destroy(newBuilding);
+                return;
+            }
+            else
+            {
+                sceneInfo.buildingResource -= 30;
+                extractor.placerad = true;
+                Debug.Log("extractor placerad");
+            }
         }
+
         if (newBuilding.TryGetComponent<lampalogiken>(out var lampa))
         {
-            lampa.placerad = true;
-            Debug.Log("lampa placerad");
+            if (sceneInfo.buildingResource < 10)
+            {
+                Debug.Log("Du har inte tillr�ckligt med resurser f�r att bygga en lampa");
+                Destroy(newBuilding);
+                return;
+            }
+            else
+            {
+                lampa.placerad = true;
+                Debug.Log("lampa placerad");
+                sceneInfo.buildingResource -= 10;
+            }
         }
         if (newBuilding.TryGetComponent<generatorlogiken>(out var generator))
         {
             generator.placerad = true;
-            Debug.Log("generator placerad");
+            if ((sceneInfo.buildingResource < 20) && (sceneInfo.energyResource < 50))
+            {
+                Debug.Log("Du har inte tillr�ckligt med resurser f�r att bygga en generator");
+                Destroy(newBuilding);
+                return;
+            }
+            else
+            {
+                sceneInfo.buildingResource -= 20;
+                sceneInfo.energyResource -= 50;
+                generator.placerad = true;
+                Debug.Log("generator placerad");
+            }
         }
-           
+
         // Notify listeners
         ByggnadPlaceradEvent?.Invoke(finalPosition);
         lampalogiken.UppdateraAllaLampor();

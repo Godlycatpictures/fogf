@@ -56,7 +56,6 @@ public class PopupManager : MonoBehaviour
         }
     }
 
-
     public void GatherResource() // ändrar värden beroende på tag
     {
         if (selectedObject != null && Resources.Contains(selectedObject.tag))
@@ -76,13 +75,41 @@ public class PopupManager : MonoBehaviour
                 popupController.HidePopup();
             }
         }
+        else if (selectedObject != null && Buildings.Contains(selectedObject.tag))
+        {
+            if (selectedObject.tag.Equals("extractor"))
+            {
+                sceneInfo.energyResource += 10;
+                sceneInfo.buildingResource += 10;
+
+                Destroy(selectedObject);
+                popupController.HidePopup();
+            }
+            else if (selectedObject.tag.Equals("lampa"))
+            {
+                sceneInfo.buildingResource += 10;
+
+                Destroy(selectedObject);
+                popupController.HidePopup();
+            }
+            else if (selectedObject.tag.Equals("generator"))
+            {
+                sceneInfo.buildingResource += 15;
+
+                Destroy(selectedObject);
+                popupController.HidePopup();
+            }
+        }
         else
+        {
+            Debug.Log("No valid resource selected.");
+        }
         {
             Debug.Log("No valid resource selected.");
         }
     }
 
-    public void CancelResource()
+    public void CancelResource() // var i början enbart för resurser därav namnet cancelRESOURCE ;)
     {
         popupController.HidePopup();
     }
