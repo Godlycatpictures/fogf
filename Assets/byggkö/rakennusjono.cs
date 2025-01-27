@@ -5,6 +5,7 @@ using UnityEngine;
 public class rakennusjono : MonoBehaviour
 {
 
+    public ByggPlacerare byggPlacerare; 
 
     // Start is called before the first frame update
     void Start()

@@ -6,10 +6,15 @@ using UnityEngine.EventSystems;
 
 public class ByggPlacerare : MonoBehaviour
 {
+    // för byggnande kanske (kommenterat långt efter koden skapats)
     public Grid grid; // grid
     public ByggValet aktivByggnad; // vilken byggnad via byggvalet.cs
     public LayerMask Byggnader; // rätt layer
     public GameObject enKusligByggnad; // orka med två skripts previews är här från och med nu
+
+    // för byggkön
+    public GameObject byggnadManVillBygga; // den skickas till rakennusjono.cs
+    public rakennusjono rakennusjono; // så att den kan skickas
 
     // eventsystem för bättre saker
     public static event Action<Vector3> ByggnadPlaceradEvent; // säger till allt och alla att en byggnad har placerats
@@ -107,7 +112,6 @@ public class ByggPlacerare : MonoBehaviour
         // för placerad sak i varje byggnad
         if (newBuilding.TryGetComponent<extractorlogik>(out var extractor))
         {
-            extractor.placerad = true;
             if (sceneInfo.buildingResource < 30)
             {
                 Debug.Log("Du har inte tillräckligt med resurser för att bygga en extractor");
@@ -139,7 +143,6 @@ public class ByggPlacerare : MonoBehaviour
         }
         if (newBuilding.TryGetComponent<generatorlogiken>(out var generator))
         {
-            generator.placerad = true;
             if ((sceneInfo.buildingResource < 20) && (sceneInfo.energyResource < 50))
             {
                 Debug.Log("Du har inte tillr�ckligt med resurser f�r att bygga en generator");
