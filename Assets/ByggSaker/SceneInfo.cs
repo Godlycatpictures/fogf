@@ -4,11 +4,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SceneInfo", menuName = "Persistence")]
 public class SceneInfo : MonoBehaviour
 {
-    public int energyResource = 0; // kol och sånt
+    public int energyResource = 0; // kol och sï¿½nt
     public int buildingResource = 0; // till att bygga
 
-    public int kolSomTasUpp = 5; // kol man får
+    public int kolSomTasUpp = 5; // kol man fï¿½r
 
-    public float tid = 1;
+    public float TimeScale = 1;
 
 }
