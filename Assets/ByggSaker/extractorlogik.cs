@@ -25,7 +25,7 @@ public class extractorlogik : MonoBehaviour
     {
         if (exracting && placerad)
         {
-            tidsPress -= Time.deltaTime;
+            tidsPress -= Time.deltaTime * sceneInfo.TimeScale;
 
             if (tidsPress <= 0) // ger 5 kol per 10 sec
             {
