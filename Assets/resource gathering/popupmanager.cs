@@ -8,23 +8,22 @@ public class PopupManager : MonoBehaviour
     public betterpopup popupController;
     private Camera mainCamera;
     public SceneInfo sceneInfo;
+    public ByggPlacerare ByggPlacerare;
 
     // för resource
     List<string> Resources = new List<string> { "stone", "coal", "tree" };
     List<string> Buildings = new List<string> { "generator", "extractor", "lampa"};
     private GameObject selectedObject;
 
-    private int byggnaderPreviewLayer;
     void Start()
     {
         mainCamera = Camera.main;
-        byggnaderPreviewLayer = LayerMask.NameToLayer("ByggnaderPreview"); // den ska ignorera previewn så att man kan placera ut (annar gatherar preview)
-
+        
     }
 
     void Update()
     {
-        if (!popupController.IsActive())
+        if (!popupController.IsActive() && !ByggPlacerare.Instance.gameObject.activeInHierarchy)
         {
             if (Input.GetMouseButtonDown(0)) // vansterlkick
             {
@@ -41,13 +40,6 @@ public class PopupManager : MonoBehaviour
 
         if (hit.collider != null)
         {
-
-            int hitLayer = hit.collider.gameObject.layer;
-            if (hitLayer == byggnaderPreviewLayer)
-            {
-                Debug.Log("inte placerad byggnad");
-                return; // ignorerar
-            }
 
             Debug.Log("Träffade objekt: " + hit.collider.name + ", Tag: " + hit.collider.tag);
 
