@@ -20,6 +20,12 @@ public class rakennusjono : MonoBehaviour
         }
     }
 
+    /// ta bort delay
+    /// gör transparent när placerad
+    /// byggare ska gå till byggnad, sen bygga det
+    /// inte längre transparent
+    /// gå till nästa byggnad
+
     // Coroutine för att placera byggnader
     private IEnumerator PlaceraByggnader()
     {
