@@ -14,9 +14,12 @@ public class PopupManager : MonoBehaviour
     List<string> Buildings = new List<string> { "generator", "extractor", "lampa"};
     private GameObject selectedObject;
 
+    private int byggnaderPreviewLayer;
     void Start()
     {
         mainCamera = Camera.main;
+        byggnaderPreviewLayer = LayerMask.NameToLayer("ByggnaderPreview"); // den ska ignorera previewn så att man kan placera ut (annar gatherar preview)
+
     }
 
     void Update()
@@ -38,6 +41,14 @@ public class PopupManager : MonoBehaviour
 
         if (hit.collider != null)
         {
+
+            int hitLayer = hit.collider.gameObject.layer;
+            if (hitLayer == byggnaderPreviewLayer)
+            {
+                Debug.Log("inte placerad byggnad");
+                return; // ignorerar
+            }
+
             Debug.Log("Träffade objekt: " + hit.collider.name + ", Tag: " + hit.collider.tag);
 
             if (Resources.Contains(hit.collider.tag))

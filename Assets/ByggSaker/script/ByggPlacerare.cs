@@ -13,7 +13,6 @@ public class ByggPlacerare : MonoBehaviour
     public GameObject enKusligByggnad; // orka med två skripts previews är här från och med nu
 
     // för byggkön
-    public GameObject byggnadManVillBygga; // den skickas till rakennusjono.cs
     public rakennusjono rakennusjono; // så att den kan skickas
 
     // eventsystem för bättre saker
@@ -44,7 +43,21 @@ public class ByggPlacerare : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && !IntePlaceraVidKnappar())
         {
-            testaPlaceraByggnad();
+            if (aktivByggnad != null)
+            {
+                GameObject byggnadPrefab = aktivByggnad.getAktivByggnad();
+
+                // resurserna tas innan den placerars
+                if (harResurserna(byggnadPrefab))
+                {
+                    taBortResurserna(byggnadPrefab);
+                    rakennusjono.villPlaceraDennaByggnad(byggnadPrefab);
+                }
+                else
+                {
+                    Debug.Log("Inte tillräckligt med resurser!");
+                }
+            }
         }
         else if (Input.GetMouseButtonDown(1))
         {
@@ -52,24 +65,9 @@ public class ByggPlacerare : MonoBehaviour
         }
     }
 
-    private void testaPlaceraByggnad()
-    {
-        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3Int gridPosition = grid.WorldToCell(mouseWorldPos);
-        gridPosition.z = -8;
-
-        if (!placeradeByggnader.ContainsKey(gridPosition))
-        {
-            placeraByggnaden(gridPosition);
-        }
-        else
-        {
-            Debug.Log("kan ej placeras här, tagen av byggnad (en annan)");
-        }
-    }
     private void visaKusligaByggnaden()
     {
-        if (enKusligByggnad == null) return;
+        if (enKusligByggnad == null || aktivByggnad == null) return;
 
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3Int gridPosition = grid.WorldToCell(mouseWorldPos);
@@ -85,6 +83,7 @@ public class ByggPlacerare : MonoBehaviour
     }
     public void SetPreviewBuilding(GameObject buildingPrefab)
     {
+        Debug.Log("körs jag? (setpreviewbuilding byggplacerare)");
         if (enKusligByggnad != null)
         {
             Destroy(enKusligByggnad);  // den ska BORT
@@ -94,71 +93,15 @@ public class ByggPlacerare : MonoBehaviour
         enKusligByggnad.layer = LayerMask.NameToLayer("ByggnaderPreview");
     }
 
-    private void placeraByggnaden(Vector3Int gridPosition)
+    public void placeraByggnaden(GameObject byggnadPrefab, Vector3Int gridPosition)
     {
-        gridPosition.z = -8;
-        Debug.Log("placerad byggnad i " + gridPosition);
-
         Vector3 finalPosition = grid.CellToWorld(gridPosition);
-        //finalPosition.z = -8;
-
-        GameObject buildingPrefab = aktivByggnad.getAktivByggnad();
-        GameObject newBuilding = Instantiate(buildingPrefab, finalPosition, Quaternion.identity);
+        GameObject newBuilding = Instantiate(byggnadPrefab, finalPosition, Quaternion.identity);
         newBuilding.layer = LayerMask.NameToLayer("Byggnader");
 
-        placeradeByggnader[gridPosition] = newBuilding;
-        Debug.Log("byggnad sparas i " + gridPosition);
+        placeradeByggnader[gridPosition] = newBuilding; // Lägg till byggnaden i dictionaryn
+        Debug.Log("Byggnad placerad i " + gridPosition);
 
-        // för placerad sak i varje byggnad
-        if (newBuilding.TryGetComponent<extractorlogik>(out var extractor))
-        {
-            if (sceneInfo.buildingResource < 30)
-            {
-                Debug.Log("Du har inte tillräckligt med resurser för att bygga en extractor");
-                Destroy(newBuilding);
-                return;
-            }
-            else
-            {
-                sceneInfo.buildingResource -= 30;
-                extractor.placerad = true;
-                Debug.Log("extractor placerad");
-            }
-        }
-
-        if (newBuilding.TryGetComponent<lampalogiken>(out var lampa))
-        {
-            if (sceneInfo.buildingResource < 10)
-            {
-                Debug.Log("Du har inte tillr�ckligt med resurser f�r att bygga en lampa");
-                Destroy(newBuilding);
-                return;
-            }
-            else
-            {
-                lampa.placerad = true;
-                Debug.Log("lampa placerad");
-                sceneInfo.buildingResource -= 10;
-            }
-        }
-        if (newBuilding.TryGetComponent<generatorlogiken>(out var generator))
-        {
-            if ((sceneInfo.buildingResource < 20) && (sceneInfo.energyResource < 50))
-            {
-                Debug.Log("Du har inte tillr�ckligt med resurser f�r att bygga en generator");
-                Destroy(newBuilding);
-                return;
-            }
-            else
-            {
-                sceneInfo.buildingResource -= 20;
-                sceneInfo.energyResource -= 50;
-                generator.placerad = true;
-                Debug.Log("generator placerad");
-            }
-        }
-
-        // Notify listeners
         ByggnadPlaceradEvent?.Invoke(finalPosition);
         lampalogiken.UppdateraAllaLampor();
     }
@@ -188,4 +131,47 @@ public class ByggPlacerare : MonoBehaviour
     {
         return EventSystem.current.IsPointerOverGameObject(); // inte vid knappar
     }
+
+    public bool finnsByggnadVidPlatsen(Vector3Int gridPosition)
+    {
+        return placeradeByggnader.ContainsKey(gridPosition);
+    }
+
+
+    // resource control neråt
+
+    public bool harResurserna(GameObject byggnad)
+    {
+        if (byggnad.TryGetComponent<extractorlogik>(out var extractor))
+        {
+            return sceneInfo.buildingResource >= 30;
+        }
+        if (byggnad.TryGetComponent<lampalogiken>(out var lampa))
+        {
+            return sceneInfo.buildingResource >= 10;
+        }
+        if (byggnad.TryGetComponent<generatorlogiken>(out var generator))
+        {
+            return sceneInfo.buildingResource >= 20 && sceneInfo.energyResource >= 50;
+        }
+        return true; 
+    }
+
+    public void taBortResurserna(GameObject byggnad)
+    {
+        if (byggnad.TryGetComponent<extractorlogik>(out var extractor))
+        {
+            sceneInfo.buildingResource -= 30;
+        }
+        if (byggnad.TryGetComponent<lampalogiken>(out var lampa))
+        {
+            sceneInfo.buildingResource -= 10;
+        }
+        if (byggnad.TryGetComponent<generatorlogiken>(out var generator))
+        {
+            sceneInfo.buildingResource -= 20;
+            sceneInfo.energyResource -= 50;
+        }
+    }
+
 }
