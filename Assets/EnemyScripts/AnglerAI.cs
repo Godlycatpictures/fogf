@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AnglerAI : MonoBehaviour
 {
+    public SceneInfo sceneInfo;
     public float roamingSpeed = 2f;
     public float roamTime = 2f;
     public float roamPauseTime = 1f;
@@ -40,6 +41,9 @@ public class AnglerAI : MonoBehaviour
 
     void Update()
     {
+        animator.speed = sceneInfo.TimeScale;
+        roamingSpeed = sceneInfo.TimeScale * 2f;
+        runAwaySpeed = 3f * sceneInfo.TimeScale;
 
         if (isRoaming)
         {

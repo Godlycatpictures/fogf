@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class FoglingAI : MonoBehaviour
 {
+    public SceneInfo sceneInfo;
     public float detectionRange = 10f;      // Range to detect objects with the tag "lampa" or "unit"
     public float attackRange = 1f;
-    public float attackCooldown = 3f;      // Cooldown between attacks
+    public float attackCooldown = 3f ;      // Cooldown between attacks
     public float windupTime = 1f;          // Delay before launching the attack
 
     public float wanderSpeed = 2f;
@@ -34,6 +35,11 @@ public class FoglingAI : MonoBehaviour
 
     void Update()
     {
+        animator.speed = sceneInfo.TimeScale;
+     attackCooldown = 3f * sceneInfo.TimeScale ;      // Cooldown between attacks
+    windupTime = 1f * sceneInfo.TimeScale ;          // Delay before launching the attack
+    wanderSpeed = 2f * sceneInfo.TimeScale ;
+    chaseSpeed = 4f * sceneInfo.TimeScale ;
         // Reduce the attack timer over time
         if (attackTimer > 0)
             attackTimer -= Time.deltaTime;
