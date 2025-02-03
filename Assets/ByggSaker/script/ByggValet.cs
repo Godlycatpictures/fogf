@@ -15,6 +15,10 @@ public class ByggValet : MonoBehaviour
     {
         
         setAktivByggnad(0);
+        if (byggPlacerare == null)
+        {
+            byggPlacerare = FindObjectOfType<ByggPlacerare>(); // Hitta byggPlacerare 
+        }
     }
 
     public void setAktivByggnad(int index)
@@ -29,6 +33,8 @@ public class ByggValet : MonoBehaviour
 
             if (byggPlacerare != null)
             {
+                // sätts den?
+                Debug.Log("kusligbyggnad = " + aktivByggnad);
                 byggPlacerare.SetPreviewBuilding(aktivByggnad);
             }
         }

@@ -8,6 +8,7 @@ public class PopupManager : MonoBehaviour
     public betterpopup popupController;
     private Camera mainCamera;
     public SceneInfo sceneInfo;
+    public ByggPlacerare ByggPlacerare;
 
     // för resource
     List<string> Resources = new List<string> { "stone", "coal", "tree" };
@@ -17,11 +18,12 @@ public class PopupManager : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
+        
     }
 
     void Update()
     {
-        if (!popupController.IsActive())
+        if (!popupController.IsActive() && !ByggPlacerare.Instance.gameObject.activeInHierarchy)
         {
             if (Input.GetMouseButtonDown(0)) // vansterlkick
             {
@@ -38,6 +40,7 @@ public class PopupManager : MonoBehaviour
 
         if (hit.collider != null)
         {
+
             Debug.Log("Träffade objekt: " + hit.collider.name + ", Tag: " + hit.collider.tag);
 
             if (Resources.Contains(hit.collider.tag))
