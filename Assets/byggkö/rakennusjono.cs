@@ -5,11 +5,19 @@ using UnityEngine;
 public class rakennusjono : MonoBehaviour
 {
 
-    public ByggPlacerare byggPlacerare; // få tillgång till vilken byggnad
-    private Queue<GameObject> jonoRakennukseille = new Queue<GameObject>(); // Kö för byggnader
-    public float byggDelay = 2f; // Fördröjning i sekunder mellan byggnader
-    private bool bygger = false; // För att undvika flera coroutine samtidigt
+ public SceneInfo sceneInfo;
+    public ByggPlacerare byggPlacerare; // fï¿½ tillgï¿½ng till vilken byggnad
+    private Queue<GameObject> jonoRakennukseille = new Queue<GameObject>(); // Kï¿½ fï¿½r byggnader
+    public float byggDelay = 2f; // Fï¿½rdrï¿½jning i sekunder mellan byggnader
+    private bool bygger = false; // Fï¿½r att undvika flera coroutine samtidigt
+private void update(){
+byggDelay = 2f * sceneInfo.TimeScale;
+}
+    void Start()
+    {
+        byggPlacerare = FindObjectOfType<ByggPlacerare>();
 
+}
     
     public void villPlaceraDennaByggnad(GameObject byggnadPrefab)
     {
@@ -21,27 +29,27 @@ public class rakennusjono : MonoBehaviour
     }
 
     /// ta bort delay
-    /// gör transparent när placerad
-    /// byggare ska gå till byggnad, sen bygga det
-    /// inte längre transparent
-    /// gå till nästa byggnad
+    /// gï¿½r transparent nï¿½r placerad
+    /// byggare ska gï¿½ till byggnad, sen bygga det
+    /// inte lï¿½ngre transparent
+    /// gï¿½ till nï¿½sta byggnad
 
-    // Coroutine för att placera byggnader
+    // Coroutine fï¿½r att placera byggnader
     private IEnumerator PlaceraByggnader()
     {
         bygger = true;
 
         while (jonoRakennukseille.Count > 0)
         {
-            GameObject byggnadPrefab = jonoRakennukseille.Peek(); // Kollar första byggnaden i kön utan att ta bort den
+            GameObject byggnadPrefab = jonoRakennukseille.Peek(); // Kollar fï¿½rsta byggnaden i kï¿½n utan att ta bort den
 
             Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3Int gridPosition = byggPlacerare.grid.WorldToCell(mouseWorldPos);
-            gridPosition.z = -8; // Sätt rätt höjd så att alla byggnader hamnar på samma nivå
+            gridPosition.z = -8; // Sï¿½tt rï¿½tt hï¿½jd sï¿½ att alla byggnader hamnar pï¿½ samma nivï¿½
 
             if (byggPlacerare.finnsByggnadVidPlatsen(gridPosition))
             {
-                Debug.Log("Kan ej placera byggnad här, plats upptagen.");
+                Debug.Log("Kan ej placera byggnad hï¿½r, plats upptagen.");
                 jonoRakennukseille.Dequeue(); 
                 continue; 
             }
@@ -55,7 +63,7 @@ public class rakennusjono : MonoBehaviour
             else
             {
                 Debug.Log("Resurser tog slut innan byggnaden kunde placeras!");
-                break; // Stoppa byggkön tills spelaren får mer resurser
+                break; // Stoppa byggkï¿½n tills spelaren fï¿½r mer resurser
             }
 
             yield return new WaitForSeconds(byggDelay);
