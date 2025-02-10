@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: "Assets/Scenes/b\xE4ttrebyggsystem.unity"
     guid: 6a3471ccde54d554fa44be3462f000bb
+  - enabled: 1
+    path: Assets/Scenes/Main meny.unity
+    guid: abf1f57d8f789d74c86acaed8501a211
+  - enabled: 1
+    path: "Assets/Scenes/sammanst\xE4llt.unity"
+    guid: 466c369b895a3594e9bd18474831ae8c
   m_configObjects: {}

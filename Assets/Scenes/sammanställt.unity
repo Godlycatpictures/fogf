@@ -580,6 +580,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fogling
       objectReference: {fileID: 0}
+    - target: {fileID: 5851654804862700011, guid: 870d81aa204c9a34e8965d9374742a1e, type: 3}
+      propertyPath: m_TagString
+      value: enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
