@@ -953,8 +953,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d590c24613d678a4da1e783a33ab7b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  byggPlacerare: {fileID: 0}
-  rakennusjono: {fileID: 0}
+  byggPlacerare: {fileID: 1939568624}
+  rakennusjono: {fileID: 1935875414}
 --- !u!213 &768671453
 Sprite:
   m_ObjectHideFlags: 0
@@ -3864,6 +3864,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8023267553157100500, guid: 24600d4ac72109d42ac8f5cbdfc30b0a, type: 3}
+      propertyPath: byggarn
+      value: 
+      objectReference: {fileID: 692988385}
+    - target: {fileID: 8023267553157100500, guid: 24600d4ac72109d42ac8f5cbdfc30b0a, type: 3}
+      propertyPath: sceneInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: 5dff12e62444a1b458df3970508b156b, type: 2}
+    - target: {fileID: 8023267553157100500, guid: 24600d4ac72109d42ac8f5cbdfc30b0a, type: 3}
+      propertyPath: buildermove
+      value: 
+      objectReference: {fileID: 692988389}
     - target: {fileID: 8023267553157100500, guid: 24600d4ac72109d42ac8f5cbdfc30b0a, type: 3}
       propertyPath: byggPlacerare
       value: 
