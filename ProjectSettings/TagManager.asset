@@ -13,6 +13,7 @@ TagManager:
   - unit
   - tree
   - stone
+  - projectile
   layers:
   - Default
   - TransparentFX
@@ -52,4 +53,7 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Projectiles
+    uniqueID: 3120334171
     locked: 0

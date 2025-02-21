@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1804283013951165086}
   - component: {fileID: 7040787724016383724}
   - component: {fileID: 6151917121220393047}
-  - component: {fileID: -6720067591285077495}
   - component: {fileID: 7460879612531394483}
   - component: {fileID: 5254927112964480934}
+  - component: {fileID: 2887722844829120878}
   m_Layer: 11
   m_Name: Flinger
   m_TagString: enemy
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 8119210195988717763}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -110,28 +110,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-6720067591285077495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8119210195988717763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67c9d5d61996c6444a75d47663b7db42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detectionRange: 10
-  attackRange: 3
-  wanderSpeed: 2
-  wanderTime: 2
-  idleTime: 2
-  projectilePrefab: {fileID: 3886652192111327857, guid: 9f91d5d1d439c064ab128b76d81d6622, type: 3}
-  firePoint: {fileID: 2332059136386768234, guid: a7d27c0e5529ac749987720a9678f473, type: 3}
-  attackCooldown: 2
-  target: {fileID: 0}
-  rb: {fileID: 7460879612531394483}
 --- !u!50 &7460879612531394483
 Rigidbody2D:
   serializedVersion: 4
@@ -194,6 +172,33 @@ CircleCollider2D:
   m_Offset: {x: -0.1, y: -0.1}
   serializedVersion: 2
   m_Radius: 0.9
+--- !u!114 &2887722844829120878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8119210195988717763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f575531e4da0b44449b4576f9e03f70d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneInfo: {fileID: 11400000, guid: 5dff12e62444a1b458df3970508b156b, type: 2}
+  roamingSpeed: 2
+  roamTime: 2
+  roamPauseTime: 1
+  detectionRange: 5
+  attackRange: 5
+  cooldownTime: 3
+  rb: {fileID: 7460879612531394483}
+  FirePoint: {fileID: 4505740153720985707}
+  targetUnit: {fileID: 0}
+  gloop: {fileID: 3886652192111327857, guid: 9f91d5d1d439c064ab128b76d81d6622, type: 3}
+  isRoaming: 1
+  attackUnit: 0
+  isMoving: 0
+  hasAttacked: 0
 --- !u!1001 &2223293471014864129
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -258,16 +263,42 @@ PrefabInstance:
       propertyPath: firePointRb
       value: 
       objectReference: {fileID: 8265898541041095803}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6914195954478921799, guid: a7d27c0e5529ac749987720a9678f473, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4993736619092585766, guid: a7d27c0e5529ac749987720a9678f473, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2742346516259874968}
   m_SourcePrefab: {fileID: 100100000, guid: a7d27c0e5529ac749987720a9678f473, type: 3}
 --- !u!4 &4505740153720985707 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2332059136386768234, guid: a7d27c0e5529ac749987720a9678f473, type: 3}
   m_PrefabInstance: {fileID: 2223293471014864129}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6600000371581970471 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4993736619092585766, guid: a7d27c0e5529ac749987720a9678f473, type: 3}
+  m_PrefabInstance: {fileID: 2223293471014864129}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2742346516259874968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600000371581970471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a82ce027e8b632347baf150e002b8e00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aimTarget: {x: 0, y: 0}
+  target: {fileID: 0}
+  obj: {fileID: 8119210195988717763}
+  rb: {fileID: 8265898541041095803}
+  rb2: {fileID: 7460879612531394483}
 --- !u!50 &8265898541041095803 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 7812873768583680378, guid: a7d27c0e5529ac749987720a9678f473, type: 3}
