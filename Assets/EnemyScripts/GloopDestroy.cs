@@ -5,6 +5,7 @@ using UnityEngine;
 public class GloopDestroy : MonoBehaviour
 {
     public Rigidbody2D rb;
+    public SceneInfo sceneInfo;
     public Animator animator;
     public bool OnHit;
     private float deathTimer = 10f;
@@ -29,7 +30,6 @@ public class GloopDestroy : MonoBehaviour
         animator.SetBool("OnHit", true);
         animator.SetBool("Flying", false);
 
-        rb.velocity = Vector2.zero; 
         StartCoroutine(Destrucion());
 
     }
@@ -37,8 +37,10 @@ public class GloopDestroy : MonoBehaviour
     private IEnumerator Destrucion()
     {
 
+
+
         rb.velocity = Vector2.zero; 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(sceneInfo.TimeScale * 1f);
         
 
         Destroy(gameObject);
@@ -47,10 +49,15 @@ public class GloopDestroy : MonoBehaviour
 
     private IEnumerator DestrucionTimer()
     {
-        rb.velocity = Vector2.zero; 
-        yield return new WaitForSeconds(deathTimer);
+
+        yield return new WaitForSeconds(sceneInfo.TimeScale * deathTimer);
 
         Destroy(gameObject);
+
+    }
+    void Update(){
+               
+    animator.speed = sceneInfo.TimeScale;
 
     }
 }

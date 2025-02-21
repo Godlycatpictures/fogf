@@ -98,7 +98,7 @@ public class FlingerAi : MonoBehaviour
 
         // Instantiate projectile at FirePoint's WORLD position (bugfix)
         var bullet = Instantiate(gloop, FirePoint.position, Quaternion.Euler(0, 0, angle));
-        bullet.GetComponent<Rigidbody2D>().velocity = direction * 5f;
+        bullet.GetComponent<Rigidbody2D>().velocity = direction * 10f;
 
         isRoaming = false; // Stop moving while attacking
 

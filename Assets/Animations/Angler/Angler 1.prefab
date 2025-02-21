@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3541215921981204358}
   - component: {fileID: 8710150674200326403}
   - component: {fileID: 8066786452193222493}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Angler 1
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 2025705132, guid: 1798522b9a8822b4bb2960887fd88c1d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -119,7 +119,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 2046401413986865971}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -135,7 +135,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &8710150674200326403
 CircleCollider2D:
   m_ObjectHideFlags: 0
