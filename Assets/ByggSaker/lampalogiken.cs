@@ -11,28 +11,39 @@ public class lampalogiken : MonoBehaviour
     public bool placerad = false;
     public int kolUppslukare = 5;
     public float UppslukningsTid = 60f;
+    public LampOnOff lampOnOff;
 
     public SceneInfo sceneInfo; // scene info för kol o sånt
 
     private void OnEnable()
     {
         ByggPlacerare.ByggnadPlaceradEvent += ByggnaderHarUppdaterats;
-        rakennusHajoittaja.ByggnadBorttagenEvent += ByggnaderHarUppdaterats;
+        PopupManager.ByggnadBorttagenEvent += ByggnaderHarUppdaterats;
     }
 
     private void OnDisable()
     {
         ByggPlacerare.ByggnadPlaceradEvent -= ByggnaderHarUppdaterats;
-        rakennusHajoittaja.ByggnadBorttagenEvent -= ByggnaderHarUppdaterats;
+        PopupManager.ByggnadBorttagenEvent -= ByggnaderHarUppdaterats;
     }
 
 
     private void Start()
     {
         tittaLedning();
+        lampOnOff.HideLight();
     }
     private void Update()
     {
+
+        if (harLedning)
+        {
+            lampOnOff.ShowLight();
+        } else
+        {
+            lampOnOff.HideLight();
+        }
+
         if (harLedning && placerad)
         {
             // här skicka saken så att lampan är på till relaterad skript
@@ -51,17 +62,16 @@ public class lampalogiken : MonoBehaviour
         }
     }
 
-    private void ByggnaderHarUppdaterats(Vector3 buildingPosition) // måste checka sakerna igen
+    private void ByggnaderHarUppdaterats(Vector3 buildingPosition)
     {
-        if (Vector3.Distance(transform.position, buildingPosition) <= lampRange)
-        {
-            tittaLedning(); 
-        }
+        UppdateraAllaLampor(); // Istället för att bara uppdatera enskilda
     }
 
     private void tittaLedning()
     {
-        bool kopplingFinns = false; // temp för att inte nolställa update
+        harLedning = false; // Återställ så vi inte har gamla felaktiga värden
+
+        bool kopplingFinns = false;
 
         // Kolla om en generator eller extractor finns i närheten
         Collider2D[] nearbyObjects = Physics2D.OverlapCircleAll(transform.position, lampRange);
@@ -69,40 +79,27 @@ public class lampalogiken : MonoBehaviour
         {
             if (obj.CompareTag("generator") || obj.CompareTag("extractor"))
             {
-                kopplingFinns = true; 
+                kopplingFinns = true;
                 break;
             }
         }
 
-        // ingen extractorgenerator betyder leta lampor
         if (!kopplingFinns)
         {
             HashSet<lampalogiken> visitedLamps = new HashSet<lampalogiken>();
             kopplingFinns = KontrolleraLedningViaLampor(this, visitedLamps);
         }
 
-        if (kopplingFinns)
-        {
-            harLedning = true;
-        }
-        else
-        {
-            harLedning = false;
-        }
+        harLedning = kopplingFinns;
     }
+
 
     private bool KontrolleraLedningViaLampor(lampalogiken startLampa, HashSet<lampalogiken> besöktaLampor)
     {
-        // om jag har ledning, behöver jag inte checka fö ledning
-        if (startLampa.harLedning)
-        {
-            return true;
-        }
+        if (besöktaLampor.Contains(startLampa)) return false;
 
-        // redan chackad check
         besöktaLampor.Add(startLampa);
 
-        // cirkel
         Collider2D[] nearbyLamps = Physics2D.OverlapCircleAll(startLampa.transform.position, lampRange);
         foreach (var obj in nearbyLamps)
         {
@@ -112,23 +109,17 @@ public class lampalogiken : MonoBehaviour
             {
                 if (nearbyLamp.harLedning)
                 {
-                    // om en lampa har koppling har jag koppling :D
                     return true;
                 }
-                else
+                else if (KontrolleraLedningViaLampor(nearbyLamp, besöktaLampor))
                 {
-                    // titta efter andra lampor
-                    if (KontrolleraLedningViaLampor(nearbyLamp, besöktaLampor))
-                    {
-                        return true;
-                    }
+                    return true;
                 }
             }
         }
 
-        return false; 
+        return false;
     }
-
     public static void UppdateraAllaLampor()
     {
         lampalogiken[] allaLampor = FindObjectsOfType<lampalogiken>();

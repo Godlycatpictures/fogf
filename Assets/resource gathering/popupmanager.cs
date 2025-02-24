@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,12 @@ public class PopupManager : MonoBehaviour
     private Camera mainCamera;
     public SceneInfo sceneInfo;
     public ByggPlacerare ByggPlacerare;
+    public lampalogiken lampalogiken;
+
+    public vec
+
+
+    public static event Action<Vector3> ByggnadBorttagenEvent;
 
     // för resource
     List<string> Resources = new List<string> { "stone", "coal", "tree" };
@@ -18,6 +25,7 @@ public class PopupManager : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
+
         
     }
 
@@ -55,6 +63,7 @@ public class PopupManager : MonoBehaviour
                 string popupText = $"Destroy {hit.collider.tag}";
                 popupController.ShowPopup(mousePosition, popupText, "Confirm", "Cancel");
                 selectedObject = hit.collider.gameObject; // Skicka objektet
+                
             }
         }
     }
@@ -80,6 +89,7 @@ public class PopupManager : MonoBehaviour
         }
         else if (selectedObject != null && Buildings.Contains(selectedObject.tag))
         {
+            
             if (selectedObject.tag.Equals("extractor"))
             {
                 sceneInfo.energyResource += 10;
