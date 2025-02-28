@@ -188,7 +188,7 @@ MonoBehaviour:
   roamingSpeed: 1
   roamTime: 3
   roamPauseTime: 4
-  detectionRange: 5
+  detectionRange: 10
   attackRange: 5
   cooldownTime: 3
   rb: {fileID: 7460879612531394483}

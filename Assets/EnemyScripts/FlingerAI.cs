@@ -22,15 +22,18 @@ public class FlingerAi : MonoBehaviour
     public bool attackUnit = false;
     public bool isMoving = false;
     public bool hasAttacked = false;
+    public bool detectCoolDown = false;
 
     private Vector2 roamingDirection;
     private float roamTimer;
     private float pauseTimer;
 
     void Start()
-    {
+    {        
+
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+
         roamTimer = roamTime;
         roamingDirection = GetRandomDirection();
 
@@ -42,7 +45,6 @@ public class FlingerAi : MonoBehaviour
         animator.speed = sceneInfo.TimeScale;
         roamingSpeed = sceneInfo.TimeScale * 2f;
 
-        // Find the closest target
         targetUnit = FindClosestTargetWithTag("unit", detectionRange);
         attackUnit = targetUnit != null;
 

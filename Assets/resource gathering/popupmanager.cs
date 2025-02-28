@@ -5,19 +5,16 @@ using UnityEngine;
 public class PopupManager : MonoBehaviour
 {
 
-    // för popup
+    // fï¿½r popup
     public betterpopup popupController;
     private Camera mainCamera;
     public SceneInfo sceneInfo;
     public ByggPlacerare ByggPlacerare;
     public lampalogiken lampalogiken;
-
-    public vec
-
-
+    
     public static event Action<Vector3> ByggnadBorttagenEvent;
 
-    // för resource
+    // fï¿½r resource
     List<string> Resources = new List<string> { "stone", "coal", "tree" };
     List<string> Buildings = new List<string> { "generator", "extractor", "lampa"};
     private GameObject selectedObject;
@@ -49,7 +46,7 @@ public class PopupManager : MonoBehaviour
         if (hit.collider != null)
         {
 
-            Debug.Log("Träffade objekt: " + hit.collider.name + ", Tag: " + hit.collider.tag);
+            Debug.Log("Trï¿½ffade objekt: " + hit.collider.name + ", Tag: " + hit.collider.tag);
 
             if (Resources.Contains(hit.collider.tag))
             {
@@ -68,7 +65,7 @@ public class PopupManager : MonoBehaviour
         }
     }
 
-    public void GatherResource() // ändrar värden beroende på tag
+    public void GatherResource() // ï¿½ndrar vï¿½rden beroende pï¿½ tag
     {
         if (selectedObject != null && Resources.Contains(selectedObject.tag))
         {
@@ -120,7 +117,7 @@ public class PopupManager : MonoBehaviour
         }
     }
 
-    public void CancelResource() // var i början enbart för resurser därav namnet cancelRESOURCE ;)
+    public void CancelResource() // var i bï¿½rjan enbart fï¿½r resurser dï¿½rav namnet cancelRESOURCE ;)
     {
         popupController.HidePopup();
     }
