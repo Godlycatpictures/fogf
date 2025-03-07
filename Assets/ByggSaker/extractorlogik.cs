@@ -23,7 +23,7 @@ public class extractorlogik : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (exracting && placerad)
+        if (placerad)
         {
             tidsPress -= Time.deltaTime * sceneInfo.TimeScale;
 
