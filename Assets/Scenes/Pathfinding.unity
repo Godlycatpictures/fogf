@@ -722,8 +722,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
 <<<<<<< Updated upstream
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+=======
+>>>>>>> parent of 25c5595 (Galanga)
 =======
 >>>>>>> parent of 25c5595 (Galanga)
       value: 0.73830885
@@ -731,12 +734,15 @@ PrefabInstance:
       value: -4
 >>>>>>> Stashed changes
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       value: -4
 >>>>>>> Stashed changes
 =======
       value: -4
 >>>>>>> Stashed changes
+=======
+>>>>>>> parent of 25c5595 (Galanga)
 =======
 >>>>>>> parent of 25c5595 (Galanga)
       objectReference: {fileID: 0}
@@ -744,8 +750,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
 <<<<<<< Updated upstream
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+=======
+>>>>>>> parent of 25c5595 (Galanga)
 =======
 >>>>>>> parent of 25c5595 (Galanga)
       value: 1.8432045
@@ -753,12 +762,15 @@ PrefabInstance:
       value: 2.9
 >>>>>>> Stashed changes
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       value: 2.9
 >>>>>>> Stashed changes
 =======
       value: 2.9
 >>>>>>> Stashed changes
+=======
+>>>>>>> parent of 25c5595 (Galanga)
 =======
 >>>>>>> parent of 25c5595 (Galanga)
       objectReference: {fileID: 0}
