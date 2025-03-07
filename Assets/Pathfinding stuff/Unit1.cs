@@ -1,32 +1,49 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Pathfinding;
-public class Unit1 : MonoBehaviour
+using UnityEngine;
+
+public class Unit : MonoBehaviour
 {
     private AIPath path;
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private Transform target;
-    [SerializeField] private float stoppingDistance;
-    private float distanceToTarget;
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float stoppingDistance = 0.5f;
+    private Vector3 targetPosition;
+    private bool isMoving = false;
+
     void Start()
     {
         path = GetComponent<AIPath>();
+        targetPosition = transform.position;
     }
 
-   
     void Update()
     {
         path.maxSpeed = moveSpeed;
-        
-        distanceToTarget = Vector2.Distance(transform.position, target.position);
-        if(distanceToTarget < stoppingDistance)
+        float distanceToTarget = Vector2.Distance(transform.position, targetPosition);
+
+        if (distanceToTarget < stoppingDistance)
         {
-            path.destination = transform.position;
+            path.destination = transform.position; // Let AIPath handle stopping
         }
         else
         {
-            path.destination = target.position;
+            path.destination = targetPosition;
         }
+    }
+
+    public void SetTarget(Vector3 newTargetPosition)
+    {
+        Debug.Log("Unit received move command to: " + newTargetPosition);
+
+        targetPosition = newTargetPosition;
+        isMoving = true;
+
+        if (path == null)
+        {
+            Debug.LogError("AIPath component is missing!");
+            return;
+        }
+
+        path.destination = targetPosition;
+        path.SearchPath(); // Forces AIPath to recalculate movement
     }
 }
